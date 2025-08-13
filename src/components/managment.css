@@ -1,0 +1,129 @@
+.tab-wrapper  {
+  height: 620px;
+}
+
+.tab-block {
+  width: 100%;
+  max-width: 1390px;
+}
+
+.tab-slide {
+  transform: perspective(1600px);
+  -webkit-transform: perspective(1600px);
+  -moz-transform: perspective(1600px);
+  -ms-transform: perspective(1600px);
+  -o-transform: perspective(1600px);
+}
+
+.tab-slide {
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  height: 600px;
+  transition: all 0.5s ease;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #393535;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  overflow: hidden;
+}
+
+.tab-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Active Slide - top of the stack */
+.tab-slide.active {
+  opacity: 1;
+  z-index: 10;
+  pointer-events: auto;
+  top: 0;
+  transform: none;
+}
+
+/* Previous slides — stacked behind the active one */
+.tab-slide.previous {
+  opacity: 1;
+  z-index: 5;
+  top: -10px;
+}
+
+/* Future slides are hidden */
+.tab-slide.hidden-slide {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 640px) {
+  .tab-block {
+    width: 100%;
+    max-width: 84%;
+  }
+  .tab-slide {
+    height: 340px;
+  }
+  .tab-wrapper {
+    height: 360px;
+  }
+}
+@media (min-width: 640px) and (max-width: 767px) {
+  .tab-block {
+    width: 100%;
+    max-width: 580px;
+  }
+  .tab-slide {
+    height: 360px;
+  }
+  .tab-wrapper {
+    height: 380px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tab-block {
+    width: 100%;
+    max-width: 700px;
+  }
+  .tab-slide {
+    height: 480px;
+  }
+  .tab-wrapper {
+    height: 500px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .tab-block {
+    width: 100%;
+    max-width: 980px;
+  }
+  .tab-slide {
+    height: 510px;
+  }
+  .tab-wrapper {
+    height: 530px;
+  }
+}
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .tab-block {
+    width: 100%;
+    max-width: 1240px;
+  }
+}
+@media (min-width: 1440px) {
+  .tab-block {
+    width: 100%;
+    max-width: 1390px;
+  }
+}

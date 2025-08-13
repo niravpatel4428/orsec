@@ -1,38 +1,58 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* font-family: "Sora", sans-serif; */
+@import "keen-slider/keen-slider.min.css";
+
+:root {
+  --color-primary-dark: #02030C;
+  --color-gray-dark: #2D2D31;
+  --color-neutral-dark: #141415;
+  --color-light: #FEFEFE;
+  --color-gray-light: #B6B6B6;
+  --color-gray-medium: #ABACAD;
+  --color-accent-dark: #8C70B1;
+  --color-accent-light: #BB8BF1;
+  --color-muted: #B6B6B6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body {
+  @apply font-sora font-normal bg-primary-dark;
+  /* @apply font-sora font-normal bg-white; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.custom-container {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 25px;
+  margin: 0 auto;
+}
+
+
+@media (min-width: 1280px) and (max-width:1439px) { 
+  .custom-container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1024px) and (max-width:1279px) {
+  .custom-container {
+    max-width: 1020px;
+  }
+}
+@media (min-width: 768px) and (max-width:1023px) { 
+  .custom-container {
+    max-width: 750px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media (max-width: 767px) {
+  .custom-container {padding: 0 15px;}
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (min-width: 640px) and (max-width:767px) { 
+  .custom-container {
+    max-width: 600px;
   }
 }

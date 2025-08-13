@@ -82,7 +82,7 @@ const Managment = ({
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [tabs.length]);
+  }, [tabs]);
 
   // Animate stack on activeTab change
   useEffect(() => {

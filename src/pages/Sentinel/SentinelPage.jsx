@@ -93,7 +93,6 @@ const SentinelPage = () => {
       />
       <Intelligence />
       <Attackers />
-      <MiniVersion />
       <Managment
         tabs={tabs}
         heading="Pilotez votre cybersécurité en quelques clics."
@@ -135,6 +134,7 @@ const SentinelPage = () => {
           "Réponse efficace aux incidents, remontée de preuves, audit complet des événements.",
         ]}
       />
+      <MiniVersion />
     </MainLayout>
   );
 };

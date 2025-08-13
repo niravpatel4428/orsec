@@ -5,11 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 // Register the plugin before using
-
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // Tabbing Section
-
 const Managment = ({
   tabs = [],
   heading,
@@ -24,6 +22,7 @@ const Managment = ({
   const sectionRef = useRef(null);
   const slidesRef = useRef([]);
 
+  // GSAP scroll trigger
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -31,7 +30,7 @@ const Managment = ({
           trigger: sectionRef.current,
           start: "top top",
           end: `+=${tabs.length * 100}%`,
-          scrub: 1,
+          scrub: 0.7,
           pin: true,
           onUpdate: (self) => {
             const progress = self.progress;
@@ -46,55 +45,69 @@ const Managment = ({
 
       tabs.forEach((_, index) => {
         const currentSlide = slidesRef.current[index];
-
         gsap.set(currentSlide, {
           position: "absolute",
           left: "50%",
           xPercent: -50,
         });
 
-        tl.fromTo(
-          currentSlide,
-          {
-            y: "100%",
-            rotateX: -30,
-            opacity: 0,
-            transformOrigin: "center bottom",
-          },
-          {
+        if (index === 0) {
+          // First slide visible immediately
+          gsap.set(currentSlide, {
             y: "0%",
             rotateX: 0,
             opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-          },
-          `+=0.001`
-        );
+          });
+        } else {
+          // Animate other slides normally
+          tl.fromTo(
+            currentSlide,
+            {
+              y: "100%",
+              rotateX: -30,
+              opacity: 0,
+              transformOrigin: "center bottom",
+            },
+            {
+              y: "0%",
+              rotateX: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power2.out",
+            },
+            `+=0.001`
+          );
+        }
       });
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [tabs.length]);
 
+  // Animate stack on activeTab change
   useEffect(() => {
     slidesRef.current.forEach((slide, index) => {
       const diff = activeTab - index;
 
       if (diff >= 0 && diff <= 3) {
-        // Show only active + last 3
-        gsap.set(slide, {
-          zIndex: tabs.length - diff, // Active highest
+        gsap.to(slide, {
+          zIndex: tabs.length - diff,
           top: `-${diff * 10}px`,
           width: `${100 - diff * 2}%`,
           opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
         });
       } else {
-        // Hide older slides
-        gsap.set(slide, { opacity: 0 });
+        gsap.to(slide, { opacity: 0, duration: 0.3 });
       }
     });
-  }, [activeTab]);
-
+  }, [activeTab, tabs.length]);
+  // Click handler for tabs
+  const handleTabClick = (index) => {
+    if (index === activeTab) return;
+    setActiveTab(index);
+  };
   return (
     <>
       <section className="relative py-28 overflow-hidden">
@@ -125,7 +138,8 @@ const Managment = ({
               {tabs.map((tab, index) => (
                 <button
                   key={index}
-                  className={`outline-none w-[168px] py-4 xl:py-8 px-5 text-center border-r border-[#574D63] inline-flex justify-center items-center transition-colors duration-300 ${
+                  onClick={() => handleTabClick(index)}
+                  className={`outline-none min-w-[168px] py-4 xl:py-8 px-5 text-center border-r border-[#574D63] inline-flex justify-center items-center transition-colors duration-300 ${
                     activeTab === index
                       ? "bg-[#574D63] text-white"
                       : "text-white/40 hover:text-white"
@@ -139,31 +153,19 @@ const Managment = ({
           {/* tabs */}
           <div className="block relative pt-20 md:pt-14 xl:pt-24 w-full tab-wrapper">
             <div className="relative mx-auto tab-block">
-              {tabs.map((tab, index) => {
-                let classNames = "tab-slide";
-
-                if (index === activeTab) {
-                  classNames += " active";
-                } else if (index < activeTab) {
-                  classNames += " previous";
-                } else {
-                  classNames += " hidden-slide";
-                }
-
-                return (
-                  <div
-                    key={index}
-                    ref={(el) => (slidesRef.current[index] = el)}
-                    className={classNames}
-                  >
-                    <img
-                      src={tab.image}
-                      alt={tab.label}
-                      className="object-cover w-full h-full rounded-lg"
-                    />
-                  </div>
-                );
-              })}
+              {tabs.map((tab, index) => (
+                <div
+                  key={index}
+                  ref={(el) => (slidesRef.current[index] = el)}
+                  className="tab-slide"
+                >
+                  <img
+                    src={tab.image}
+                    alt={tab.label}
+                    className="object-cover w-full h-full rounded-lg"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -111,7 +111,7 @@ const Managment = ({
     <>
       <section className="relative py-28 overflow-hidden">
         <div className="custom-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2 md:mb-12">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 mb-2 md:mb-12">
             <div>
               {heading && (
                 <h4 className="text-light text-32 md:text-40">

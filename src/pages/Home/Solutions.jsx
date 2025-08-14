@@ -3,10 +3,12 @@ import plus from "../../assets/round-plus-with-bg.svg";
 import solution3 from "../../assets/solution-card-3.svg";
 import solution2 from "../../assets/solution-card-2.svg";
 import solution1 from "../../assets/solution-card-1.svg";
+import { Link } from "react-router";
 
 const solutions = [
   {
     image: solution1,
+    linkUrl: "/sentinel",
     alt: "image-1",
     title: "NMS Sentinel",
     description:
@@ -15,6 +17,7 @@ const solutions = [
   },
   {
     image: solution2,
+    linkUrl: "/audit",
     alt: "image-2",
     title: "NMS Audit",
     description:
@@ -23,6 +26,7 @@ const solutions = [
   },
   {
     image: solution3,
+    linkUrl: "/shield",
     alt: "image-3",
     title: "NMS Shield",
     description:
@@ -46,13 +50,13 @@ const Solutions = () => {
             <div key={index} className="flex flex-col gap-6 group">
               <div className="relative p-6 border bordre-white rounded-10 group-hover:bg-neutral-dark transition-all duration-300">
                 <div className="absolute top-6 right-6">
-                  <button className="size-10">
+                  <Link to={solution.linkUrl} className="size-10">
                     <img
                       src={plus}
                       alt="plus"
                       className="w-full h-full hover:opacity-70 transition-all duration-300"
                     />
-                  </button>
+                  </Link>
                 </div>
 
                 <div className="h-56 sm:h-80 md:h-96 lg:h-[409px] flex justify-center items-center">

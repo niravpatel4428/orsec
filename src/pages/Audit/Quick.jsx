@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
-import img1 from "../../assets/Quick-img-1.png";
+import img1 from "../../assets/Quick-img-1.webp";
 import Btn from "../../components/btn";
 
 const images = [img1, img1, img1, img1, img1, img1];

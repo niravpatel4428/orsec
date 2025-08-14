@@ -11,10 +11,10 @@ import icon3 from "../../assets/MilitarySolution-3.svg";
 import observe from "../../assets/observe-video.gif";
 import Hero from "./Hero";
 import Managment from "../../components/Managment";
-import image1 from "../../assets/tab-block-1.jpg";
-import image2 from "../../assets/tab-block-2.jpg";
-import image3 from "../../assets/tab-block-3.jpg";
-import image4 from "../../assets/tab-block-4.jpg";
+import image1 from "../../assets/tab-block-1.webp";
+import image2 from "../../assets/tab-block-2.webp";
+import image3 from "../../assets/tab-block-3.webp";
+import image4 from "../../assets/tab-block-4.webp";
 const newFeatures = [
   {
     icon: icon1,

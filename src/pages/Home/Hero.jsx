@@ -1,8 +1,8 @@
 import React from "react";
-import blocks from "../../assets/blocks.png";
-import blocksM from "../../assets/blocks-mobile.png";
-import blocksT from "../../assets/blocks-tablet.png";
-import blocksST from "../../assets/blocks-tablet-small.png";
+import blocks from "../../assets/blocks.webp";
+import blocksM from "../../assets/blocks-mobile.webp";
+import blocksT from "../../assets/blocks-tablet.webp";
+import blocksST from "../../assets/blocks-tablet-small.webp";
 const Hero = () => {
   return (
     <section className="relative lg:h-[900px] xl:h-[1150px] -mt-[68px] lg:-mt-20s">

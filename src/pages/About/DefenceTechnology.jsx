@@ -1,9 +1,9 @@
 import React from 'react';
-import defence_img1 from '../../assets/defence-img1.jpg';
-import defence_img2 from '../../assets/defence-img2.jpg';
-import defence_img3 from '../../assets/defence-img3.jpg';
-import defence_img4 from '../../assets/defence-img4.jpg';
-import defence_img5 from '../../assets/defence-img5.jpg';
+import defence_img1 from '../../assets/defence-img1.webp';
+import defence_img2 from '../../assets/defence-img2.webp';
+import defence_img3 from '../../assets/defence-img3.webp';
+import defence_img4 from '../../assets/defence-img4.webp';
+import defence_img5 from '../../assets/defence-img5.webp';
 
 const DefenceTechnology = () => {
     return (

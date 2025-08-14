@@ -1,6 +1,6 @@
 import React from "react";
 import Btn from "../../components/btn";
-import machine from "../../assets/shield-page-hero-machine.png";
+import machine from "../../assets/shield-page-hero-machine.webp";
 import bg from "../../assets/hield-page-hero-bg.png";
 const Hero = () => {
   return (

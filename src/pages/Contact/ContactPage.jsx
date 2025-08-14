@@ -1,11 +1,11 @@
 
 import MainLayout from '../../layouts/MainLayout';
-import NmsAudit from './NmsAudit';
+import ContactForm from './ContactForm';
 
 const ContactPage = () => {
   return (
     <MainLayout>
-      <NmsAudit/>
+      <ContactForm />
     </MainLayout>
   )
 }

@@ -1,7 +1,7 @@
 
-import expertImg1 from '../../assets/expert-img1.jpg';
-import expertImg2 from '../../assets/expert-img2.jpg';
-import expertImg3 from '../../assets/expert-img3.jpg';
+import expertImg1 from '../../assets/expert-img1.webp';
+import expertImg2 from '../../assets/expert-img2.webp';
+import expertImg3 from '../../assets/expert-img3.webp';
 
 const ExpertTeam = () => {
     const experts = [

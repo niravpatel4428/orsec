@@ -74,6 +74,7 @@ const Managment = ({
               opacity: 1,
               duration: 1,
               ease: "power2.out",
+              immediateRender: false,
             },
             `+=0.001`
           );
@@ -92,8 +93,8 @@ const Managment = ({
       if (diff >= 0 && diff <= 3) {
         gsap.to(slide, {
           zIndex: tabs.length - diff,
-          top: `-${diff * 10}px`,
-          width: `${100 - diff * 2}%`,
+          top: `-${diff * 20}px`,
+          width: `${100 - diff * 3}%`,
           opacity: 1,
           duration: 0.5,
           ease: "power2.out",

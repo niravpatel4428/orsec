@@ -1,5 +1,4 @@
-// import img1 from "../../assets/shield-page-quick-img.png";
-import img1 from "../../assets/shield-page-quick.png";
+import img1 from "../../assets/shield-page-quick.webp";
 import bg from "../../assets/shield-page-quick-img-bg.png";
 import Btn from "../../components/btn";
 

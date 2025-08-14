@@ -9,10 +9,10 @@ import Quick from "./Quick";
 import Globe from "./Globe";
 import Solution from "./Solution";
 import Hero from "./hero";
-import image1 from "../../assets/tab-block-1.jpg";
-import image2 from "../../assets/tab-block-2.jpg";
-import image3 from "../../assets/tab-block-3.jpg";
-import image4 from "../../assets/tab-block-4.jpg";
+import image1 from "../../assets/tab-block-1.webp";
+import image2 from "../../assets/tab-block-2.webp";
+import image3 from "../../assets/tab-block-3.webp";
+import image4 from "../../assets/tab-block-4.webp";
 import Managment from "../../components/Managment";
 const infoItems = [
   {

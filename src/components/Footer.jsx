@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import ftBg from "../assets/footer-background.png";
-import ftBgM from "../assets/footer-background-mobile.png";
+import ftBg from "../assets/footer-background.webp";
+import ftBgM from "../assets/footer-background-mobile.webp";
 import youtube from "../assets/youtube.svg";
 import linkedin from "../assets/linkedin.svg";
 import logo from "../assets/navbar-logo.svg";

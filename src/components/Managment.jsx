@@ -43,40 +43,32 @@ const Managment = ({
         },
       });
 
-      tabs.forEach((_, index) => {
-        const currentSlide = slidesRef.current[index];
-        gsap.set(currentSlide, {
+      // base layout + base z-index so first render is deterministic
+      slidesRef.current.forEach((el, i) => {
+        gsap.set(el, {
           position: "absolute",
           left: "50%",
           xPercent: -50,
+          zIndex: tabs.length - i, // 0 on top to start
         });
+      });
 
-        if (index === 0) {
-          // First slide visible immediately
-          gsap.set(currentSlide, {
-            y: "0%",
-            rotateX: 0,
-            opacity: 1,
-          });
+      tabs.forEach((_, i) => {
+        const el = slidesRef.current[i];
+        if (i === 0) {
+          gsap.set(el, { y: "0%", rotateX: 0, opacity: 1 });
         } else {
-          // Animate other slides normally
+          // put the incoming slide ABOVE before its motion starts
+          tl.set(el, { zIndex: tabs.length + 100 - i }); // any value higher than current stack
           tl.fromTo(
-            currentSlide,
+            el,
             {
               y: "100%",
               rotateX: -30,
               opacity: 0,
               transformOrigin: "center bottom",
             },
-            {
-              y: "0%",
-              rotateX: 0,
-              opacity: 1,
-              duration: 1,
-              ease: "power2.out",
-              immediateRender: false,
-            },
-            `+=0.001`
+            { y: "0%", rotateX: 0, opacity: 1, duration: 1, ease: "power2.out" }
           );
         }
       });
@@ -87,23 +79,29 @@ const Managment = ({
 
   // Animate stack on activeTab change
   useEffect(() => {
-    slidesRef.current.forEach((slide, index) => {
-      const diff = activeTab - index;
+    slidesRef.current.forEach((slide, i) => {
+      const diff = activeTab - i;
 
       if (diff >= 0 && diff <= 3) {
+        // set z-index instantly (do NOT tween it)
+        gsap.set(slide, { zIndex: tabs.length - diff });
+
+        // then animate only the visual props
         gsap.to(slide, {
-          zIndex: tabs.length - diff,
           top: `-${diff * 20}px`,
           width: `${100 - diff * 3}%`,
           opacity: 1,
           duration: 0.5,
           ease: "power2.out",
+          overwrite: "auto",
         });
       } else {
-        gsap.to(slide, { opacity: 0, duration: 0.3 });
+        gsap.set(slide, { zIndex: 0 });
+        gsap.to(slide, { opacity: 0, duration: 0.3, overwrite: "auto" });
       }
     });
   }, [activeTab, tabs.length]);
+
   // Click handler for tabs
   const handleTabClick = (index) => {
     if (index === activeTab) return;

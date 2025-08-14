@@ -30,7 +30,7 @@ const Managment = ({
           trigger: sectionRef.current,
           start: "top top",
           end: `+=${tabs.length * 100}%`,
-          scrub: 0.7,
+          scrub: true,
           pin: true,
           onUpdate: (self) => {
             const progress = self.progress;

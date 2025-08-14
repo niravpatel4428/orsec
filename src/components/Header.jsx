@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { NavLink } from "react-router";
 import logo from "../assets/navbar-logo.svg";
@@ -66,7 +66,7 @@ const Header = () => {
           >
             <div
               className={`${
-                show ? 'max-lg:block' : 'max-lg:hidden'
+                show ? "max-lg:block" : "max-lg:hidden"
               } max-lg:h-[calc(100%-0px)] max-lg:overflow-y-scroll max-lg:pt-20`}
             >
               <div className="max-lg:h-full max-lg:overflow-y-scroll max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center">
@@ -92,7 +92,7 @@ const Header = () => {
                   <div onClick={handleShow} className="">
                     <Btn text="Réserver une démo" href="/contact" />
                   </div>
-                  <div onClick={handleShow} className="">
+                  <div className="">
                     <LanguageSwitcher />
                   </div>
                 </div>
@@ -132,14 +132,69 @@ const Client = () => {
   );
 };
 const LanguageSwitcher = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedLang, setSelectedLang] = useState("Fr");
+  const dropdownRef = useRef(null);
+
+  const languages = [
+    { code: "Fr", label: "Français" },
+    { code: "En", label: "English" },
+  ];
+
+  const handleSelect = (lang) => {
+    setSelectedLang(lang.code);
+    setOpen(false);
+    // TODO: Add your language change logic here
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
-    <Link to="/" className="group flex items-center gap-2 px-3">
-      {/* <img src={globe} alt="icon" className="w-5" /> */}
-      <Globe />
-      <span className="text-[#717172] text-13  group-hover:text-light transition-all duration-300">
-        Fr
-      </span>
-    </Link>
+    <div
+      ref={dropdownRef}
+      className="relative flex items-center justify-center lg:justify-start"
+    >
+      {/* Toggle button */}
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="group flex items-center gap-2 lg:px-3 p-2 lg:p-0 rounded-full lg:rounded-none"
+      >
+        <Globe className="w-5 h-5 text-[#717172] group-hover:text-light transition-colors" />
+        <span className="text-[#717172] text-13 group-hover:text-light transition-colors">
+          {selectedLang}
+        </span>
+      </button>
+
+      {/* Dropdown menu */}
+      {open && (
+        <ul
+          className={`absolute ${
+            // Below lg: position above the button
+            "bottom-full mb-2 lg:top-full lg:bottom-auto lg:mt-2"
+          } right-0 bg-neutral-dark rounded-lg shadow-lg border border-gray-700 overflow-hidden z-50`}
+        >
+          {languages.map((lang) => (
+            <li
+              key={lang.code}
+              onClick={() => handleSelect(lang)}
+              className={`px-4 py-2 cursor-pointer text-white text-sm hover:bg-gray-700 ${
+                selectedLang === lang.code ? "bg-gray-800" : ""
+              }`}
+            >
+              {lang.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 

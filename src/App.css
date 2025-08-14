@@ -23,6 +23,23 @@ body {
   /* @apply font-sora font-normal bg-white; */
 }
 
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(168,85,247,0.6));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 25px rgba(168,85,247,1));
+  }
+}
+
+.animate-breathing {
+  animation: breathing 1s ease-in-out infinite;
+  -webkit-animation: breathing 1s ease-in-out infinite;
+}
+
+
 .custom-container {
   width: 100%;
   max-width: 1440px;

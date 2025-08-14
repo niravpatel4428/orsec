@@ -1,5 +1,5 @@
 import img1 from "../../assets/shield-page-quick.webp";
-import bg from "../../assets/shield-page-quick-img-bg.png";
+import bg from "../../assets/shield-page-quick-img-bg.webp";
 import Btn from "../../components/btn";
 
 const steps = [

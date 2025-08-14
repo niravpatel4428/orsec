@@ -1,5 +1,5 @@
 import React from "react";
-import bg from "../../assets/sentinel-bg.png";
+import bg from "../../assets/sentinel-bg.webp";
 import machine from "../../assets/sentinel-machine.png";
 import Btn from "../../components/btn";
 const Hero = () => {

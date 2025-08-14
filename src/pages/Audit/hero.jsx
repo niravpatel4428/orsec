@@ -1,7 +1,7 @@
 import React from "react";
 import Btn from "../../components/btn";
 import machine from "../../assets/audit-hero-machine.png";
-import bg from "../../assets/about-hero-bg.png";
+import bg from "../../assets/about-hero-bg.webp";
 const Hero = () => {
   return (
     <section className="relative md:min-h-screen flex items-center justify-center lg:min-h-screen pt-28 pb-20 md:pt-36 md:pb-28 lg:py-36  -mt-[68px] lg:-mt-20">

@@ -1,7 +1,7 @@
 import React from "react";
 import Btn from "../../components/btn";
 import machine from "../../assets/shield-page-hero-machine.webp";
-import bg from "../../assets/hield-page-hero-bg.png";
+import bg from "../../assets/hield-page-hero-bg.webp";
 const Hero = () => {
   return (
     <section className="relative -mt-[68px] lg:-mt-20 md:min-h-screen flex items-center justify-center pb-36 pt-36 md:pb-28 lg:pt-36 lg:pb-32">

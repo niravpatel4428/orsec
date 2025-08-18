@@ -13,7 +13,7 @@ import ShieldPage from "./pages/Shield/ShieldPage";
 import ContactPage from "./pages/Contact/ContactPage";
 import LegalNoticesPage from "./pages/LegalNotices/LegalNoticesPage";
 import ScrollToTop from "./components/ScrollToTop";
-import LogoLoader from "./components/LogoLoader";
+// import LogoLoader from "./components/LogoLoader";
 import { SimpleText, BlurTextReveal, BottomFade, MultiParagraphDetails, StepByStepShow, StepByStepBlock } from "./utils/SimpleText";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       {/* <LoaderProvider> */}
-      <LogoLoader />
+      {/* <LogoLoader /> */}
 
       <Router>
         <ScrollToTop />

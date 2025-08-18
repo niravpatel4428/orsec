@@ -14,7 +14,7 @@ const Trusted = () => {
             Ils nous ont confié leur sécurité
           </h6>
         </div>
-        <div className="flex max-md:flex-wrap justify-between items-center gap-10 lg:gap-16 xl:gap-24 md:h-[85px] soloBlock">
+        <div className="flex max-md:flex-wrap justify-between items-center gap-10 lg:gap-16 xl:gap-24 md:h-[85px] StepByStepShow">
             <div className="max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
                 <img src={trusted1} alt="trusted" className="object-contain" />
             </div>

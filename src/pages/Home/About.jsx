@@ -9,11 +9,11 @@ const About = () => {
           <div className="lg:col-span-6">
             <div className="lg:pr-12 xl:pr-28 xxl:pr-44">
               <div className="hidden lg:block mb-10">
-                <p className="text-gray-medium text-base BottomFade">
+                <p className="text-gray-medium text-base bottomFade">
                   [About]
                 </p>
               </div>
-              <h2 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 BottomFade">
+              <h2 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 bottomFade">
                 <span className="text-muted">175 jours</span> c&apos;est le
                 temps moyen qu&apos;il faut à une structure pour
                 s&apos;apercevoir qu&apos;elle est{" "}
@@ -43,7 +43,7 @@ const About = () => {
                 jeu de la défense : Mais celui de l&apos;observation.
               </p>
             </div>
-            <div className="gap-6 lg:mt-10 bottomfade">
+            <div className="gap-6 lg:mt-10 bottomFade">
               <Btn text="Testez nos solutions" href="/" />
             </div>
           </div>

@@ -17,17 +17,16 @@ const Hero = () => {
             </div>
             <div className="w-full md:max-w-md xl:max-w-xl lg:px-5 text-center">
               <div className="flex flex-col justify-center items-center gap-6 xl:gap-10">
-                <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl  leading-130">
-                  NMS Audit
+                <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl  leading-130 animated-title">
+                 <span>NMS Audit</span>
                 </h1>
-
-                <div className="space-y-2 text-light text-xs md:text-xl lg:text-2xl">
+                <div className="space-y-2 text-light text-xs md:text-xl lg:text-2xl multiParagraph ">
                   <p>
                     Établissez une vue d&apos;ensemble instantanée de votre
                     réseau.
                   </p>
                 </div>
-                <div className="absolute max-sm:bottom-10 max-md:bottom-14 md:relative">
+                <div className="absolute max-sm:bottom-10 max-md:bottom-14 md:relative bottomFade">
                   <Btn text="Testez NMS Audit" href="/" />
                 </div>
               </div>

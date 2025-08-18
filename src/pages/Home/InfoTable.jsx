@@ -1,6 +1,6 @@
 const InfoItem = ({ number, title, description, icon }) => {
   return (
-    <div className="w-[48%] max-md:rounded md:w-full p-4 md:pt-10 md:px-5 lg:px-8 pb-6 max-md:border border-t border-[#574D63] flex max-md:flex-col justify-between">
+    <div className="w-[48%] max-md:rounded md:w-full p-4 md:pt-10 md:px-5 lg:px-8 pb-6 max-md:border border-t border-[#574D63] flex max-md:flex-col justify-between StepByStepBlock">
       <div className="flex max-md:flex-col gap-2 md:gap-8 lg:gap-10 xl:gap-14">
         <span className="text-white text-xs md:text-sm ">{number}</span>
         <div className="w-full max-w-56 xl:max-w-80">

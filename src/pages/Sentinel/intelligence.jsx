@@ -105,12 +105,12 @@ const Intelligence = () => {
 
       <section className="relative pt-24 md:pt-24 mb-20">
         <div className="custom-container">
-          <div className="grid col-span-1 md:grid-cols-12 xxl:pl-6 mb-16 xl:mb-20">
-            <div className="md:col-span-7">
-              <h4 className="text-light text-32 xl:text-40 !leading-130">
-                Notre méthode s&apos;inspire du cycle traditionnel du
-                renseignement.{" "}
-                <span className="text-gray-light uppercase">COMINT</span>
+          <div className="grid col-span-1 lg:grid-cols-12 xxl:pl-6 mb-16 xl:mb-20">
+            <div className="lg:col-span-12">
+              <h4 className="text-light text-32 xl:text-40 !leading-130 animated-title">
+                <span> Notre méthode s&apos;inspire du cycle</span> <br />{" "}
+                <span> traditionnel du renseignement.</span>
+                <span className="text-gray-light uppercase"> COMINT</span>
               </h4>
             </div>
           </div>

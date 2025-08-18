@@ -47,6 +47,10 @@ body {
   margin: 0 auto;
 }
 
+/* animations css */
+
+.animated-title span {display: inline-block;position: relative;overflow: hidden;}
+.blur-title {position: relative;overflow: hidden;}
 
 @media (min-width: 1280px) and (max-width:1439px) { 
   .custom-container {

@@ -27,7 +27,7 @@ const TeamQualified = () => {
                 <div className="flex flex-wrap flex-col gap-10">
                     {team_details.map((section, index) => (
                         <div key={index}>
-                            <div className="flex flex-wrap flex-col gap-6">
+                            <div className="flex flex-wrap flex-col gap-6 multiParagraph">
                                 {section.details.map((para, i) => (
                                     <p key={i} className="text-xs md:text-base text-gray-medium leading-relaxed">
                                         {para}

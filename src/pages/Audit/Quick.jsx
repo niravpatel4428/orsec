@@ -50,7 +50,7 @@ const Quick = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 max-lg:gap-16 gap-15">
             <div className="max-lg:order-2 lg:col-span-6">
               <div className="flex flex-col gap-8 lg:gap-10 justify-center xl:py-3">
-                <h4 className="text-light text-40 leading-130">
+                <h4 className="text-light text-40 leading-130  animated-title">
                   Après un incident, <br />
                   <span className="text-gray-light !leading-tight">
                     réagissez vite.
@@ -61,7 +61,7 @@ const Quick = () => {
                   {steps.map((step, index) => (
                     <div
                       key={index}
-                      className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4 lg:border border-[#574D63]"
+                      className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4 lg:border border-[#574D63] StepByStepBlock"
                     >
                       <div className="hidden lg:block space-y-2">
                         <span className="text-white text-xs">
@@ -75,8 +75,9 @@ const Quick = () => {
                     </div>
                   ))}
                 </div>
-
-                <Btn text="Testez NMS Audit" href="/" />
+                <div className="bottomFade">
+                  <Btn text="Testez NMS Audit" href="/" />
+                </div>
               </div>
             </div>
             <div className="max-lg:order-1 lg:col-span-6 lg:px-5 xxl:px-10">

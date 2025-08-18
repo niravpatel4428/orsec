@@ -8,9 +8,9 @@ const MiniVersion = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14 lg:gap-10 xl:gap-4">
           <div className="md:col-span-5">
             <div className="h-full  w-full flex md:justify-center md:items-center">
-              <h5 className="text-light text-32 md:text-4xl xxl:text-40 !leading-tight">
-                Existe en <br />
-                version mini
+              <h5 className="text-light text-32 md:text-4xl xxl:text-40 !leading-tight animated-title">
+                <span>Existe en</span> <br />
+                <span>version mini</span>
               </h5>
             </div>
           </div>
@@ -25,7 +25,7 @@ const MiniVersion = () => {
                   />
                 </div>
 
-                <ul className="space-y-2 my-9">
+                <ul className="space-y-2 my-9 multiParagraph">
                   <li className="text-gray-medium text-base ">
                     Vision 360 sur tout votre réseau
                   </li>
@@ -42,8 +42,9 @@ const MiniVersion = () => {
                     Des millions d&apos;attaques identifiées et bloquées / mois
                   </li>
                 </ul>
-
-                <Btn text="Testez NMS Sentinel" href="/" />
+                <div className="bottomFade">
+                  <Btn text="Testez NMS Sentinel" href="/" />
+                </div>
               </div>
             </div>
           </div>

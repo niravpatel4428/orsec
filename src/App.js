@@ -1,8 +1,8 @@
+import { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  // useLocation,
 } from "react-router";
 import "./App.css";
 import HomePage from "./pages/Home/HomePage";
@@ -14,12 +14,21 @@ import ContactPage from "./pages/Contact/ContactPage";
 import LegalNoticesPage from "./pages/LegalNotices/LegalNoticesPage";
 import ScrollToTop from "./components/ScrollToTop";
 import LogoLoader from "./components/LogoLoader";
+import { SimpleText, BlurTextReveal, BottomFade, MultiParagraphDetails, StepByStepShow, StepByStepBlock } from "./utils/SimpleText";
 
 function App() {
+  useEffect(() => {
+    BottomFade();
+    SimpleText();
+    BlurTextReveal();
+    MultiParagraphDetails();
+    StepByStepShow();
+    StepByStepBlock();
+  }, []);
   return (
     <>
       {/* <LoaderProvider> */}
-      <LogoLoader />
+      {/* <LogoLoader /> */}
 
       <Router>
         <ScrollToTop />

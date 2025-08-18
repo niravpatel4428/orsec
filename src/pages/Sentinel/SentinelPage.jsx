@@ -82,7 +82,7 @@ const SentinelPage = () => {
     <MainLayout>
       <Hero />
       <MilitarySolution
-        mainTitle="Une solution militaire permanente pour la cyber-sécurité de votre entreprise."
+        mainTitle="Une solution militaire permanente pour la <br /> cyber-sécurité de votre entreprise."
         features={newFeatures}
       />
       <Observe

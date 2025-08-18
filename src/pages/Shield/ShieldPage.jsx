@@ -73,10 +73,13 @@ const ShieldPage = () => {
       <Globe />
       <Quick />
 
-      <div className="custom-container">
+      <div className="custom-container max-md:pt-10">
         <h4 className="text-light text-32 md:text-40 leading-130">
-          Pourquoi travailler avec <br className="hidden md:block" />{" "}
-          <span className="text-gray-light"> ORSEC TECHNOLOGIES ?</span>
+          <span> Pourquoi travailler avec </span>
+          <br className="hidden md:block" />{" "}
+          <span>
+            <p className="text-gray-light"> ORSEC TECHNOLOGIES ?</p>
+          </span>
         </h4>
       </div>
 

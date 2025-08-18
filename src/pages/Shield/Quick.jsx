@@ -35,14 +35,12 @@ const Quick = () => {
         <div className="h-full w-full max-w-[680px] mx-auto">
           <div className="h-full flex flex-col gap-8 lg:gap-10 justify-center xl:py-3">
             <div className="flex flex-col gap-8">
-              <h4 className="text-light text-32 md:text-40 leading-130">
-                Une solution
+              <h4 className="text-light text-32 md:text-40 leading-130 animated-title">
+                <span>Une solution</span>
                 <br />
-                <span className="text-gray-light !leading-tight">
-                  clé en main
-                </span>
+                <span>clé en main</span>
               </h4>
-              <p className="text-gray-medium text-base">
+              <p className="text-gray-medium text-base bottomFade">
                 Nous savons que chaque infrastructure est unique et que
                 l’adoption d’une nouvelle solution peut soulever des
                 interrogations. C’est pourquoi nos équipes vous accompagnent
@@ -54,11 +52,13 @@ const Quick = () => {
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  className="h-full py-4 px-3 lg:p-4 xxl:pr-14 flex flex-col gap-4 border border-[#574D63]"
+                  className="h-full py-4 px-3 lg:p-4 xxl:pr-14 flex flex-col gap-4 border border-[#574D63] StepByStepBlock"
                 >
                   <div className="block space-y-2">
                     <span className="text-white text-xs">{step.number}</span>
-                    <h4 className="text-white text-lg lg:text-22">{step.title}</h4>
+                    <h4 className="text-white text-lg lg:text-22">
+                      {step.title}
+                    </h4>
                   </div>
                   <div className="flex flex-col gap-2 text-gray-light text-xs md:text-sm xl:text-base">
                     <p>{step.description}</p>
@@ -67,9 +67,9 @@ const Quick = () => {
               ))}
             </div>
 
-              <div className="hidden lg:block">
-            <Btn text="Testez NMS Shield" href="/" />
-              </div>
+            <div className="hidden lg:block bottomFade">
+              <Btn text="Testez NMS Shield" href="/" />
+            </div>
           </div>
         </div>
         <div className="w-full h-full min-h-80 relative lg:ml-16 xl:ml-24">

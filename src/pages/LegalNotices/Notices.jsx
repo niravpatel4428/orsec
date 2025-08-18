@@ -78,7 +78,7 @@ const Notices = () => {
                     Mentions Légales
                 </h2>
 
-                <div className="flex flex-wrap flex-col gap-10">
+                <div className="flex flex-wrap flex-col gap-10 multiParagraph">
                     {infoList.map((item, index) => (
                         <div key={index} className="flex flex-wrap flex-col gap-6">
                             <h3 className="text-light text-2xl md:text-32  leading-130">

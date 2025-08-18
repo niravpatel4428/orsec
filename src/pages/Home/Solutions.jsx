@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router";
 import plus from "../../assets/round-plus-with-bg.svg";
 import solution3 from "../../assets/solution-card-3.svg";
 import solution2 from "../../assets/solution-card-2.svg";
 import solution1 from "../../assets/solution-card-1.svg";
-import { Link } from "react-router";
 
 const solutions = [
   {
@@ -40,15 +40,15 @@ const Solutions = () => {
     <section className="relative pb-12 md:pb-10 pt-16 md:pt-14">
       <div className="custom-container">
         <div className="mb-10">
-          <h5 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32  leading-130">
+          <h5 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 bottomFade">
             Découvrez nos solutions
           </h5>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {solutions.map((solution, index) => (
-            <div key={index} className="flex flex-col gap-6 group">
-              <div className="relative p-6 border bordre-white rounded-10 group-hover:bg-neutral-dark transition-all duration-300">
+            <div key={index} className="relative flex flex-col gap-6 group">
+              <div className="relative p-6 border bordre-white rounded-10 transition-all duration-300">
                 <div className="absolute top-6 right-6">
                   <Link to={solution.linkUrl} className="size-10">
                     <img
@@ -59,7 +59,7 @@ const Solutions = () => {
                   </Link>
                 </div>
 
-                <div className="h-56 sm:h-80 md:h-96 lg:h-[409px] flex justify-center items-center">
+                <div className="relative h-56 sm:h-80 md:h-96 lg:h-[409px] flex justify-center items-center">
                   <img
                     src={solution.image}
                     alt={solution.alt}
@@ -81,8 +81,8 @@ const Solutions = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4">
-                <p className="text-light text-[19px]  !leading-tight">
+              <div className="flex flex-col gap-4 multiParagraph">
+                <p className="text-light text-[19px] !leading-tight">
                   {solution.title}
                 </p>
                 <p className="text-gray-medium text-xs lg:text-sm xxl:text-base ">

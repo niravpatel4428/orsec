@@ -78,7 +78,7 @@ const AuditPage = () => {
     <MainLayout>
       <Hero />
       <MilitarySolution
-        mainTitle="Une solution militaire pour vos opérations de sécurité ponctuelles"
+        mainTitle="Une solution militaire pour vos opérations de <br /> sécurité ponctuelles"
         features={newFeatures}
       />
       <Observe

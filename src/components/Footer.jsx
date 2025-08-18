@@ -21,7 +21,7 @@ const Footer = () => {
               <div className="flex max-lg:flex-col lg:items-center gap-10 xl:gap-20">
                 <Link
                   to="/"
-                  className="h-[31px] inline-block w-fit max-sm:mb-2"
+                  className="h-[31px] inline-block w-fit max-sm:mb-2 bottomFade"
                 >
                   <img
                     src={logo}
@@ -30,7 +30,7 @@ const Footer = () => {
                   />
                 </Link>
 
-                <ul className="flex max-md:flex-col md:items-center gap-7 lg:gap-10">
+                <ul className="flex max-md:flex-col md:items-center gap-7 lg:gap-10 bottomFade">
                   {links.map((link, index) => (
                     <li key={index}>
                       <Link
@@ -44,7 +44,7 @@ const Footer = () => {
                 </ul>
               </div>
 
-              <ul className="flex items-center gap-15">
+              <ul className="flex items-center gap-15 bottomFade">
                 <li>
                   <Link
                     to="/"

@@ -3,6 +3,102 @@ import { Link } from "react-router";
 import { NavLink } from "react-router";
 import logo from "../assets/navbar-logo.svg";
 import Btn from "./btn";
+import { useScramble } from "use-scramble";
+
+const ScrambledLink = ({ to, onClick, children }) => {
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [display, setDisplay] = useState(children.toUpperCase().split(""));
+  const [progress, setProgress] = useState(-1); // current scrambling index
+
+  const text = children.toUpperCase();
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  useEffect(() => {
+    const checkWidth = () => setIsDesktop(window.innerWidth >= 1024);
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (!isDesktop) return;
+
+    let i = 0;
+    const letters = text.split("");
+    const newDisplay = [...letters];
+
+    const scrambleNext = () => {
+      if (i >= letters.length) {
+        setProgress(-1); // reset after finish
+        return;
+      }
+
+      setProgress(i); // 👈 track the current scrambling index
+
+      let count = 0;
+      const interval = setInterval(() => {
+        if (count < 5) {
+          newDisplay[i] = alphabet[Math.floor(Math.random() * alphabet.length)];
+          setDisplay([...newDisplay]);
+          count++;
+        } else {
+          newDisplay[i] = letters[i];
+          setDisplay([...newDisplay]);
+          clearInterval(interval);
+          i++;
+          scrambleNext();
+        }
+      }, 20); // very fast flicker
+    };
+
+    scrambleNext();
+  };
+
+  return (
+    <NavLink
+      to={to}
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      className={({ isActive }) =>
+        isActive
+          ? "text-[35px] lg:text-13 transition-colors duration-300"
+          : "text-[35px] lg:text-13 transition-colors duration-300"
+      }
+    >
+      {({ isActive }) =>
+        isDesktop ? (
+          <span>
+            {display.map((char, i) => (
+              <span
+                key={i}
+                className="transition-colors duration-200"
+                style={{
+                  color:
+                    i === progress // 👈 force current flicker to white
+                      ? "white"
+                      : i < progress // resolved
+                      ? isActive
+                        ? "white"
+                        : "#717172"
+                      : isActive // not yet scrambled
+                      ? "white"
+                      : "#717172",
+                }}
+              >
+                {char}
+              </span>
+            ))}
+          </span>
+        ) : (
+          <span className={isActive ? "text-white" : "text-[#717172]"}>
+            {text}
+          </span>
+        )
+      }
+    </NavLink>
+  );
+};
+
 const Header = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => {
@@ -25,6 +121,7 @@ const Header = () => {
     { name: "NMS Sentinel", path: "/sentinel" },
     { name: "NMS Shield", path: "/shield" },
   ];
+
   return (
     <header className="sticky top-0 left-0 right-0 pt-15 z-50">
       <div className="custom-container">
@@ -70,20 +167,12 @@ const Header = () => {
               } max-lg:h-[calc(100%-0px)] max-lg:overflow-y-scroll max-lg:pt-20`}
             >
               <div className="max-lg:h-full max-lg:overflow-y-scroll max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center">
-                <ul className="max-lg:mt-40 flex max-lg:flex-col max-lg:items-center gap-16 lg:gap-5 xl:gap-10">
+                <ul className="max-lg:mt-40 flex max-lg:flex-col max-lg:items-center gap-16 lg:gap-1 xl:gap-5">
                   {links.map((link, index) => (
-                    <li key={index}>
-                      <NavLink
-                        to={link.path}
-                        onClick={handleShow}
-                        className={({ isActive }) =>
-                          isActive
-                            ? "text-white text-[35px] lg:text-13 hover:text-light transition-all duration-300"
-                            : "text-[#717172] text-[35px] lg:text-13 hover:text-light transition-all duration-300"
-                        }
-                      >
+                    <li key={index} className="lg:min-w-28 xl:min-w-32 lg:text-center">
+                      <ScrambledLink to={link.path} onClick={handleShow}>
                         {link.name}
-                      </NavLink>
+                      </ScrambledLink>
                     </li>
                   ))}
                 </ul>

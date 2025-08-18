@@ -114,7 +114,7 @@ const Managment = ({
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 mb-2 md:mb-12">
             <div>
               {heading && (
-                <h4 className="text-light text-32 md:text-40">
+                <h4 className="text-light text-32 md:text-40 bottomFade">
                   {heading}
                   {subHeading && (
                     <span className="text-gray-medium"> {subHeading}</span>
@@ -124,7 +124,7 @@ const Managment = ({
             </div>
 
             {description && (
-              <div className="flex flex-col justify-end items-end gap-2">
+              <div className="flex flex-col justify-end items-end gap-2 bottomFade">
                 <p className="text-gray-medium text-base">{description}</p>
               </div>
             )}
@@ -176,12 +176,12 @@ const Managment = ({
                   <div className="col-span-6">
                     <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
                       {functionsTitle && (
-                        <h5 className="text-light text-2xl md:text-32 mb-11">
+                        <h5 className="text-light text-2xl md:text-32 mb-11 bottomFade">
                           {functionsTitle}
                         </h5>
                       )}
 
-                      <ul className="text-gray-medium text-xs md:text-base felx flex-col gap-3 lg:gap-4">
+                      <ul className="text-gray-medium text-xs md:text-base felx flex-col gap-3 lg:gap-4 multiParagraph">
                         {functionsList.map((item, idx) => (
                           <li key={idx}>{item}</li>
                         ))}
@@ -193,12 +193,12 @@ const Managment = ({
                   <div className="col-span-6">
                     <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
                       {utilitiesTitle && (
-                        <h5 className="text-light text-2xl md:text-32 mb-11">
+                        <h5 className="text-light text-2xl md:text-32 mb-11 bottomFade">
                           {utilitiesTitle}
                         </h5>
                       )}
 
-                      <ul className="text-gray-medium text-xs md:text-base felx flex-col gap-3 lg:gap-4">
+                      <ul className="text-gray-medium text-xs md:text-base felx flex-col gap-3 lg:gap-4 multiParagraph">
                         {utilitiesList.map((item, idx) => (
                           <li key={idx}>{item}</li>
                         ))}

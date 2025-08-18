@@ -19,7 +19,7 @@ const Globe = () => {
       <div className="w-full absolute top-2 md:top-12 left-1/2 -translate-x-1/2 z-3">
         <div className="custom-container">
           <div className="w-full sm:max-w-xl md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg mx-auto">
-            <div className="w-full flex flex-col gap-2 text-white text-xs md:text-[19px] text-center !leading-130">
+            <div className="w-full flex flex-col gap-2 text-white text-xs md:text-[19px] text-center !leading-130 bottomFade">
               <p>
                 Que vous soyez un Datacenter cherchant à gérer et sécuriser des
                 volumes massifs de données tout en optimisant la performance de

@@ -6,7 +6,7 @@ const PerspectiveVideo = () => {
     <section className="relative mt-9 md:mt-11 mb-9 md:mb-16">
       <div className="custom-container">
         <div className="mb-12">
-          <h6 className="text-light text-32 md:text-26 lg:text-28 xl:text-32 xxl:text-4xl  leading-130">
+          <h6 className="text-light text-32 md:text-26 lg:text-28 xl:text-32 xxl:text-4xl leading-130 bottomFade">
             Regardez la vidéo et changez de perspectives sur la cybersécurité.
           </h6>
         </div>

@@ -8,12 +8,12 @@ const ObserveContent = ({ subTitle, description }) => {
       <div className="">
         {subTitle && (
           <div className="max-w-md mb-6 lg:mb-9 xxl:mb-12">
-            <h3 className="text-light text-lg md:text-xl xl:text-26 w-fit mx-auto">
+            <h3 className="text-light text-lg md:text-xl xl:text-26 w-fit mx-auto bottomFade">
               {subTitle}
             </h3>
           </div>
         )}
-        <div className="flex flex-col gap-3 lg:gap-4 text-gray-medium text-xs md:text-sm xl:text-base">
+        <div className="flex flex-col gap-3 lg:gap-4 text-gray-medium text-xs md:text-sm xl:text-base multiParagraph">
           {description.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
@@ -29,8 +29,8 @@ const Observe = ({ title, subTitle, description, imageSrc }) => {
       <div className="custom-container">
         <div className="relative pt-48 md:pt-56 lg:pt-72 xxl:pt-363 max-w-[1234px] mx-auto">
           <div className="text-center mb-28 md:mb-20 lg:mb-28  xxl:mb-40">
-            <h3 className="text-light text-32 lg:text-40  !leading-130">
-              {title}
+            <h3 className="text-light text-32 lg:text-40 !leading-130 animated-title">
+              <span>{title}</span>
             </h3>
           </div>
 

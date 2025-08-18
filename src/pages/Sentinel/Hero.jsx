@@ -8,17 +8,19 @@ const Hero = () => {
       <div className="custom-container">
         <div className="w-full max-w-[810px] mx-auto">
           <div className="flex flex-col justify-center items-center gap-6 xl:gap-9 text-center">
-            <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl  leading-130">
-              NMS Sentinel
+            <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl leading-130 animated-title">
+              <span>NMS Sentinel</span>
             </h1>
 
-            <div className="space-y-2 text-light text-xs md:text-xl lg:text-2xl">
+            <div className="space-y-2 text-light text-xs md:text-xl lg:text-2xl bottomFade">
               <p>
                 Soyez alerté des menaces en temps réel, pour protéger vos
                 données des fuites et des suppressions.
               </p>
             </div>
-            <Btn text="Testez NMS Sentinel" href="/" />
+            <div className="bottomFade">
+              <Btn text="Testez NMS Sentinel" href="/" />
+            </div>
           </div>
         </div>
 

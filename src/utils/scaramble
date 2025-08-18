@@ -1,0 +1,32 @@
+const ScrambledLink = ({ to, onClick, children }) => {
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const checkWidth = () => setIsDesktop(window.innerWidth >= 1024);
+    checkWidth(); // run once on mount
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+   const { ref, replay } = useScramble({
+    text: children,
+    speed: 0.9,          // scramble speed
+    step: 1,             // reveal left → right
+    scramble: 8,         // fewer scrambled cycles (less messy)
+    range: [65, 90],     // only uppercase alphabets
+    overflow: true,     // keeps length same as original
+  });
+
+  return (
+    <NavLink
+      to={to}
+      onClick={onClick}
+      onMouseEnter={() => isDesktop && replay()} // trigger scramble on hover
+      className={({ isActive }) =>
+        isActive
+          ? "text-white text-[35px] lg:text-13 hover:text-light transition-colors duration-300"
+          : "text-[#717172] text-[35px] lg:text-13 hover:text-light transition-colors duration-300"
+      }
+    >
+      {isDesktop ? <span ref={ref} /> : children}
+    </NavLink>
+  );
+};

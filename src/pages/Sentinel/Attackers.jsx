@@ -8,14 +8,14 @@ const Attackers = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 xl:gap-4">
             <div className="max-lg:order-2 lg:col-span-6 xl:col-span-5">
               <div className="flex flex-col gap-6 lg:gap-10">
-                <h4 className="text-light text-32 xl:text-40 !leading-130 hidden md:block">
-                  Piégez les attaquants.{" "}
+                <h4 className="text-light text-32 xl:text-40 !leading-130 hidden md:block animated-title">
+                  <span>Piégez les attaquants.</span>
                 </h4>
                 <h4 className="text-light text-32 xl:text-40 !leading-130 block md:hidden">
-                  Après un incident, réagissez vite.
+                  <span>Après un incident, réagissez vite.</span>
                 </h4>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 bottomFade">
                   <div className="w-18">
                     <Clock />
                   </div>
@@ -24,24 +24,24 @@ const Attackers = () => {
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-4 text-gray-medium text-xs md:text-sm xl:text-base">
-                  <p className="">
+                <div className="flex flex-col gap-4 text-gray-medium text-xs md:text-sm xl:text-base multiParagraph">
+                  <p>
                     Installer une sonde NMS revient à laisser votre maison
                     grande ouverte, mettant en confiance les criminels, tout en
                     réagissant instantanément lorsqu&apos;ils passent le pas de
                     la porte.
                   </p>
-                  <p className="">
+                  <p>
                     Elle s&apos;appuie essentiellement sur la NDR (Network
                     Detection & Response) et la DPI (Deep Packet Inspection)
                     pour analyser en continu l&apos;ensemble du trafic réseau.
                   </p>
-                  <p className="">
+                  <p>
                     La sonde NMS utilise à la fois une détection par signatures
                     (avec des règles prédéfinies) et une analyse comportementale
                     avancée (pour repérer les attaques non référencées).
                   </p>
-                  <p className="">
+                  <p>
                     Elle agit également comme une Boîte Noire, en enregistrant
                     en continu les activités de votre réseau et en garantissant
                     une protection intégrale de vos données face aux tentatives
@@ -49,7 +49,9 @@ const Attackers = () => {
                   </p>
                 </div>
 
-                <Btn text="Testez NMS Sentinel" href="/" />
+                <div className="bottomFade">
+                  <Btn text="Testez NMS Sentinel" href="/" />
+                </div>
               </div>
             </div>
             <div className="max-lg:order-1 lg:col-span-6 xl:col-span-7">

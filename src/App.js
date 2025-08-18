@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       {/* <LoaderProvider> */}
-      {/* <LogoLoader /> */}
+      <LogoLoader />
 
       <Router>
         <ScrollToTop />

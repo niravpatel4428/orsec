@@ -80,6 +80,7 @@ const Quick = () => {
                 </div>
               </div>
             </div>
+            {/* slider */}
             <div className="max-lg:order-1 lg:col-span-6 lg:px-5 xxl:px-10">
               <div className="w-full h-full relative bg-[#111114] rounded-lg border border-[#393535] min-h-96">
                 <div ref={sliderRef} className="keen-slider w-full h-full">

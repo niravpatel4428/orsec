@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { NavLink } from "react-router";
 import logo from "../assets/navbar-logo.svg";
 import Btn from "./btn";
-import { useScramble } from "use-scramble";
+// import { useScramble } from "use-scramble";
 
 const ScrambledLink = ({ to, onClick, children }) => {
   const [isDesktop, setIsDesktop] = useState(false);

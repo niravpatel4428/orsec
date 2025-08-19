@@ -87,7 +87,7 @@ const ShieldPage = () => {
       <Managment
         tabs={tabs}
         heading="Gardez la maîtrise de votre cybersécurité en quelques clics."
-        subHeading="Portail de Management"
+        subHeading=" Portail de Management"
         description="Le Portail de Management fait office de poste de commandement : c’est ici que vous paramétrez, surveillez et administrez l’ensemble de l’écosystème NMS Audit."
         functionsTitle="Fonctions principales"
         functionsList={[
@@ -107,7 +107,7 @@ const ShieldPage = () => {
       <Managment
         tabs={tabs2}
         heading="Analysez votre trafic réseau dans ses moindres détails. "
-        subHeading="Portail d’Investigation"
+        subHeading=" Portail d’Investigation"
         description="Le Portail d’Investigation offre une vue granulaire sur tout le trafic capté par les sondes NMS, permettant aux experts cybersécurité, analystes SOC et CISO de déceler, interpréter et neutraliser les menaces."
         functionsTitle="Fonctions principales"
         functionsList={[

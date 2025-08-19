@@ -3,7 +3,7 @@ import Btn from "../../components/btn";
 import circle from "../../assets/circle-video.mp4";
 
 const visibilityData = {
-  title: "Pas de sécurité sans visibilité",
+  title: "Pas de sécurité ",
   subtitle: "sans visibilité",
   paragraphs: [
     "Afin de prendre des mesures face aux attaques (bloquer, filtrer, contre-attaquer), vous devez commencer par les identifier.",
@@ -24,7 +24,7 @@ const Visibilty = () => {
           <div className="border border-[#2D2C3C] rounded-2xl backdrop-blur-[55px] bg-visibiltyGradient">
             <div className="grid grid-cols-12 md:gap-15">
               <div className="max-lg:order-2 col-span-12 lg:col-span-6 xxl:col-span-5">
-                <div className="px-15 py-9 md:p-6 lg:p-8 xxl:p-12">
+                <div className="px-15 py-9 md:p-6 lg:p-8 xxl:p-12 lg:!pr-0">
                   <h4 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 mb-4 md:mb-10 bottomFade">
                     {visibilityData.title}{" "}
                     <span className="text-gray-medium">

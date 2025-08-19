@@ -86,7 +86,8 @@ const SentinelPage = () => {
         features={newFeatures}
       />
       <Observe
-        title="Observer pour mieux protéger"
+        title="Observer <br />
+         pour mieux protéger."
         subTitle="Comment Orsec décrypte le réseau de votre entreprise."
         description={defaultDescription}
         imageSrc={observe}
@@ -95,7 +96,7 @@ const SentinelPage = () => {
       <Attackers />
       <Managment
         tabs={tabs}
-        heading="Pilotez votre cybersécurité en quelques clics."
+        heading="Pilotez votre cybersécurité en quelques clics. "
         subHeading="Portail de Management"
         description="Le Portail de Management est l’interface principale vous permettant de configurer, superviser et maintenir l’ensemble de l’architecture NMS Sentinel."
         functionsTitle="Fonctions principales"

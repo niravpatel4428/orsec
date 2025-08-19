@@ -50,7 +50,7 @@ const Footer = () => {
                     to="/"
                     className="hover:opacity-70 transition-all duration-300"
                   >
-                    <img src={youtube} alt="icon" className="w-6" />
+                    <img src={linkedin} alt="icon" className="w-6" />
                   </Link>
                 </li>
                 <li>
@@ -58,7 +58,7 @@ const Footer = () => {
                     to="/"
                     className="hover:opacity-70 transition-all duration-300"
                   >
-                    <img src={linkedin} alt="icon" className="w-6" />
+                    <img src={youtube} alt="icon" className="w-6" />
                   </Link>
                 </li>
               </ul>

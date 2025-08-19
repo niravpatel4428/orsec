@@ -19,21 +19,21 @@ const cards = [
     id: 2,
     num: "02",
     title: "Analyser",
-    desc: "Une hausse de trafic à 2h12 ? Un comportement qui dévie ? On identifie chaque signal faible...",
+    desc: "Une hausse de trafic à 3h12 ? Un comportement qui dévie ? On identifie chaque signal faible. Pas de bruit, juste de l’intelligence.",
     icon: icon2,
   },
   {
     id: 3,
     num: "03",
     title: "Évaluer",
-    desc: "Chaque alerte passe au crible. On fait la différence entre une fausse alerte et une vraie menace...",
+    desc: "Chaque alerte passe au crible. On fait la différence entre une fausse alerte et une vraie menace. Vous gagnez en clarté, pas en stress.",
     icon: icon3,
   },
   {
     id: 4,
     num: "04",
     title: "Corréler",
-    desc: "Un événement isolé n’a aucun sens. Mais mis en relation avec d’autres...",
+    desc: "Un événement isolé n’a aucun sens. Mais mis en relation avec d’autres, il devient une pièce du puzzle. On assemble pour vous donner la vue d’ensemble..",
     icon: icon4,
   },
   {
@@ -110,7 +110,7 @@ const Intelligence = () => {
               <h4 className="text-light text-32 xl:text-40 !leading-130 animated-title">
                 <span> Notre méthode s&apos;inspire du cycle</span> <br />{" "}
                 <span> traditionnel du renseignement.</span>
-                <span className="text-gray-light uppercase"> COMINT</span>
+                <span className="text-gray-light uppercase">&nbsp;COMINT</span>
               </h4>
             </div>
           </div>
@@ -136,7 +136,7 @@ const Intelligence = () => {
                       <h4 className="text-white text-[31px] mb-4">
                         {card.title}
                       </h4>
-                      <p className="text-gray-400 text-base">{card.desc}</p>
+                      <p className="text-gray-light text-base">{card.desc}</p>
                     </div>
                   </div>
                 </div>

@@ -52,6 +52,35 @@ body {
 .animated-title span {display: inline-block;position: relative;overflow: hidden;}
 .blur-title {position: relative;overflow: hidden;}
 
+
+/* Default custom cursor style */
+.custom-cursor {
+  position: fixed;
+  opacity: 1;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  width: 50px; /* Smaller by default */
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 350ms ease;
+  transform: translate(-50%, -50%); /* Keep the cursor centered at mouse */
+  z-index: 1000;
+}
+
+
+/* Custom cursor style when hovering over links or specific elements */
+.custom-cursor--active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Optionally, style the cards */
+#customCursorCard {
+  cursor: none; /* Hide the default cursor */
+  position: relative; /* So that the custom cursor can be properly placed */
+}
+
 @media (min-width: 1280px) and (max-width:1439px) { 
   .custom-container {
     max-width: 1280px;

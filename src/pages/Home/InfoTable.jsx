@@ -1,3 +1,6 @@
+import { useRef } from "react";
+import CustomCursor from "../../components/CustomCursor";
+
 const InfoItem = ({ number, title, description, icon }) => {
   return (
     <div className="w-[48%] max-md:rounded md:w-full p-4 md:pt-10 md:px-5 lg:px-8 pb-6 max-md:border border-t border-[#574D63] flex max-md:flex-col justify-between StepByStepBlock">
@@ -23,9 +26,13 @@ const InfoItem = ({ number, title, description, icon }) => {
   );
 };
 
-const InfoTable = ({infoItems}) => {
+const InfoTable = ({ infoItems }) => {
+  const sectionRef = useRef(null);
+
   return (
-    <section className="relative py-14 md:py-20 xl:py-24">
+    <section ref={sectionRef} className="relative py-14 md:py-20 xl:py-24">
+      <CustomCursor targetRef={sectionRef} size={50} color="white" />
+
       <div className="custom-container">
         <div className="flex flex-wrap md:flex-col gap-2">
           {infoItems.map((item, index) => (

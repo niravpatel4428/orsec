@@ -17,7 +17,7 @@ const Hero = () => {
             <div className="relative z-5 w-full max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl xxl:max-w-6xl mx-auto text-center max-sm:px-5 pt-28 md:pt-36 xl:pt-44">
               <h1 className="relative text-light text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl xxl:text-40 !leading-130 loadingAnimated-title">
                 <span>
-                  Identifiez les intrusions sur votre réseau, grâce à des
+                  <p className="inline-block text-gray-light">Identifiez les intrusions</p> sur votre réseau, grâce à des
                 </span>
                 <br />
                 <span>solutions venant des Services de Renseignements.</span>

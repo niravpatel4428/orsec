@@ -25,7 +25,7 @@ const infoItems = [
   },
   {
     number: "02",
-    title: "Solutions indétectables par les hackers",
+    title: "Solutions indétectables par les hacker",
     description:
       "Nos algorithmes évoluent constamment pour contrer les nouvelles techniques d'attaque et notre architecture distribuée renforce notre résilience.",
     icon: icon2,

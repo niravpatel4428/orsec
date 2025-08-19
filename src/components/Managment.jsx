@@ -1,10 +1,7 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, } from "react";
 import "./managment.css";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
-// Register the plugin before using
+import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // Tabbing Section
@@ -18,95 +15,139 @@ const Managment = ({
   utilitiesTitle,
   utilitiesList = [],
 }) => {
-  const [activeTab, setActiveTab] = useState(0);
-  const sectionRef = useRef(null);
   const slidesRef = useRef([]);
+  const buttonsRef = useRef([]);
+  const containerRef = useRef(null);
 
-  // GSAP scroll trigger
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
+      const slides = slidesRef.current;
+      const total = tabs.length - 1;
+      const currentIndexRef = { value: 0 };
+
+      // base state
+      slides.forEach((slide, i) => {
+        gsap.set(slide, {
+          yPercent: i === 0 ? 0 : 100,
+          rotateX: i === 0 ? 0 : -30,
+          rotateY: i === 0 ? 0 : -15,
+          scale: 1,
+          zIndex: i, // base order; we’ll lift current in updateStack
+        });
+      });
+      setActiveTab(0);
+      updateStack(0); // prime the stack
+
+      // build timeline: each slide animates in; no callbacks here
       const tl = gsap.timeline({
+        defaults: { duration: 1, ease: "none", immediateRender: false },
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: containerRef.current,
+          pin: true,
+          scrub: 1,
           start: "top top",
           end: `+=${tabs.length * 100}%`,
-          scrub: true,
-          pin: true,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
           onUpdate: (self) => {
-            const progress = self.progress;
-            const activeIndex = Math.min(
-              tabs.length - 1,
-              Math.floor(progress * tabs.length)
-            );
-            setActiveTab(activeIndex);
+            // figure out nearest slide index from progress
+            const i = Math.round(tl.progress() * total);
+            if (i !== currentIndexRef.value) {
+              currentIndexRef.value = i;
+              setActiveTab(i);
+              updateStack(i);
+            }
           },
         },
       });
 
-      // base layout + base z-index so first render is deterministic
-      slidesRef.current.forEach((el, i) => {
-        gsap.set(el, {
-          position: "absolute",
-          left: "50%",
-          xPercent: -50,
-          zIndex: tabs.length - i, // 0 on top to start
-        });
+      slides.forEach((slide, i) => {
+        if (i === 0) return;
+
+        tl.to(
+          slide,
+          {
+            yPercent: 0,
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 1,
+            ease: "none",
+            immediateRender: false,
+            overwrite: "auto",
+            onStart: () => {
+              // 🔥 put this slide above all others before it animates
+              gsap.set(slide, { zIndex: tabs.length + 100 });
+            },
+          },
+          "+=0.5"
+        );
       });
 
-      tabs.forEach((_, i) => {
-        const el = slidesRef.current[i];
-        if (i === 0) {
-          gsap.set(el, { y: "0%", rotateX: 0, opacity: 1 });
-        } else {
-          // put the incoming slide ABOVE before its motion starts
-          tl.set(el, { zIndex: tabs.length + 100 - i }); // any value higher than current stack
-          tl.fromTo(
-            el,
-            {
-              y: "100%",
-              rotateX: -30,
-              opacity: 0,
-              transformOrigin: "center bottom",
+      // — helpers —
+      function setActiveTab(index) {
+        buttonsRef.current.forEach((btn, j) => {
+          btn.classList.toggle("text-white", j === index);
+          btn.classList.toggle("text-white/40", j !== index);
+        });
+      }
+
+      // only touch previous slides to avoid fighting the timeline
+      function updateStack(active) {
+        slides.forEach((s, j) => {
+          if (j === active) return; // active slide handled by timeline
+
+          const depth = active - j;
+          if (depth > 0 && depth <= 3) {
+            gsap.to(s, {
+              zIndex: tabs.length + 100 - depth, // still behind active
+              scale: 1 - depth * 0.05,
+              yPercent: -depth * 6,
+              duration: 0.3,
+              ease: "power2.out",
+              overwrite: "auto",
+            });
+          } else if (depth > 3) {
+            gsap.to(s, {
+              zIndex: j, // far back
+              scale: 0.85,
+              yPercent: -20,
+              duration: 0.3,
+              ease: "power2.out",
+              overwrite: "auto",
+            });
+          }
+        });
+      }
+      // click → scroll + sync
+      buttonsRef.current.forEach((btn, i) => {
+        btn.addEventListener("click", () => {
+          gsap.to(window, {
+            duration: 1.2,
+            scrollTo: { y: containerRef.current, offsetY: 0 },
+            onComplete: () => {
+              gsap.to(tl, {
+                progress: i / (tabs.length - 1),
+                duration: 1.2,
+                ease: "power2.inOut",
+                onUpdate: () => {
+                  // keep everything in sync during the scrubbed jump
+                  const idx = Math.round(tl.progress() * total);
+                  if (idx !== currentIndexRef.value) {
+                    currentIndexRef.value = idx;
+                    setActiveTab(idx);
+                    updateStack(idx);
+                  }
+                },
+              });
             },
-            { y: "0%", rotateX: 0, opacity: 1, duration: 1, ease: "power2.out" }
-          );
-        }
+          });
+        });
       });
-    }, sectionRef);
+    }, containerRef);
 
     return () => ctx.revert();
   }, [tabs]);
-
-  // Animate stack on activeTab change
-  useEffect(() => {
-    slidesRef.current.forEach((slide, i) => {
-      const diff = activeTab - i;
-
-      if (diff >= 0 && diff <= 3) {
-        // set z-index instantly (do NOT tween it)
-        gsap.set(slide, { zIndex: tabs.length - diff });
-
-        // then animate only the visual props
-        gsap.to(slide, {
-          top: `-${diff * 20}px`,
-          width: `${100 - diff * 3}%`,
-          opacity: 1,
-          duration: 0.5,
-          ease: "power2.out",
-          overwrite: "auto",
-        });
-      } else {
-        gsap.set(slide, { zIndex: 0 });
-        gsap.to(slide, { opacity: 0, duration: 0.3, overwrite: "auto" });
-      }
-    });
-  }, [activeTab, tabs.length]);
-
-  // Click handler for tabs
-  const handleTabClick = (index) => {
-    if (index === activeTab) return;
-    setActiveTab(index);
-  };
   return (
     <>
       <section className="relative py-28 overflow-hidden">
@@ -130,19 +171,16 @@ const Managment = ({
             )}
           </div>
         </div>
-        <div ref={sectionRef} className="relative block py-24">
+        {/* tabs */}
+        <div ref={containerRef} className="relative block py-24">
           {/* tabbing tabs */}
           <div className="custom-container">
             <div className="border border-[#574D63] flex flex-row overflow-x-auto">
               {tabs.map((tab, index) => (
                 <button
                   key={index}
-                  onClick={() => handleTabClick(index)}
-                  className={`outline-none min-w-[168px] py-4 xl:py-8 px-5 text-center border-r border-[#574D63] inline-flex justify-center items-center transition-colors duration-300 ${
-                    activeTab === index
-                      ? "bg-[#574D63] text-white"
-                      : "text-white/40 hover:text-white"
-                  }`}
+                  ref={(el) => (buttonsRef.current[index] = el)}
+                  className={`outline-none min-w-[168px] py-4 xl:py-8 px-5 text-center border-r border-[#574D63] inline-flex justify-center items-center text-white/40 transition-colors duration-300 `}
                 >
                   <p className="text-xs font-light">{tab.label}</p>
                 </button>
@@ -150,7 +188,7 @@ const Managment = ({
             </div>
           </div>
           {/* tabs */}
-          <div className="block relative pt-20 md:pt-14 xl:pt-24 w-full tab-wrapper">
+          <div className="block relative mt-20 md:mt-14 xl:mt-24 w-full h-full tab-wrapper">
             <div className="relative mx-auto tab-block">
               {tabs.map((tab, index) => (
                 <div
@@ -168,48 +206,47 @@ const Managment = ({
             </div>
           </div>
         </div>
-        {functionsList === "" && utilitiesList === "" && (
-          <div className="relative pt-14 md:pt-20 xxl:pt-24">
-            <div className="custom-container">
-              <div className="grid grid-cols-12 gap-4">
-                {functionsList === "" && (
-                  <div className="col-span-6">
-                    <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
-                      {functionsTitle && (
-                        <h5 className="text-light text-2xl md:text-32 mb-11 bottomFade">
-                          {functionsTitle}
-                        </h5>
-                      )}
+        {/* ul li  */}
+        <div className="relative pt-0">
+          <div className="custom-container">
+            <div className="grid grid-cols-12 gap-4">
+              {/* {functionsList === "" && ( */}
+                <div className="col-span-6">
+                  <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
+                    {functionsTitle && (
+                      <h5 className="text-light text-2xl md:text-32 mb-11 bottomFade">
+                        {functionsTitle}
+                      </h5>
+                    )}
 
-                      <ul className="text-gray-medium text-xs md:text-base felx flex-col gap-3 lg:gap-4 multiParagraph">
-                        {functionsList.map((item, idx) => (
-                          <li key={idx}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ul className="text-gray-medium text-xs md:text-base pl-3 felx flex-col gap-3 lg:gap-4 multiParagraph">
+                      {functionsList.map((item, idx) => (
+                        <li key={idx} className="list-disc">{item}</li>
+                      ))}
+                    </ul>
                   </div>
-                )}
-                {utilitiesList === "" && (
-                  <div className="col-span-6">
-                    <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
-                      {utilitiesTitle && (
-                        <h5 className="text-light text-2xl md:text-32 mb-11 bottomFade">
-                          {utilitiesTitle}
-                        </h5>
-                      )}
+                </div>
+              {/* )}  */}
+              {/* {utilitiesList === "" && ( */}
+                <div className="col-span-6">
+                  <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
+                    {utilitiesTitle && (
+                      <h5 className="text-light text-2xl md:text-32 mb-11 bottomFade">
+                        {utilitiesTitle}
+                      </h5>
+                    )}
 
-                      <ul className="text-gray-medium text-xs md:text-base felx flex-col gap-3 lg:gap-4 multiParagraph">
-                        {utilitiesList.map((item, idx) => (
-                          <li key={idx}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ul className="text-gray-medium text-xs md:text-base pl-3 felx flex-col gap-3 lg:gap-4 multiParagraph">
+                      {utilitiesList.map((item, idx) => (
+                        <li key={idx} className="list-disc">{item}</li>
+                      ))}
+                    </ul>
                   </div>
-                )}
-              </div>
+                </div>
+              {/* )} */}
             </div>
           </div>
-        )}
+        </div>
       </section>
     </>
   );

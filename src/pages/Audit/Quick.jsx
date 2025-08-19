@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, {  useRef, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import img1 from "../../assets/Quick-img-1.webp";
 import Btn from "../../components/btn";
+import CustomCursor from "../../components/CustomCursor";
 
 const images = [img1, img1, img1, img1, img1, img1];
 const steps = [
@@ -31,6 +32,7 @@ const steps = [
   },
 ];
 const Quick = () => {
+  const sectionRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -46,7 +48,8 @@ const Quick = () => {
   return (
     <section className="relative pt-14 md:pt-16 xl:pt-28">
       <div className="custom-container">
-        <div className="md:pl-4">
+        <div ref={sectionRef} className="relative md:pl-4">
+          <CustomCursor targetRef={sectionRef} size={50} color="white" />
           <div className="grid grid-cols-1 lg:grid-cols-12 max-lg:gap-16 gap-15">
             <div className="max-lg:order-2 lg:col-span-6">
               <div className="flex flex-col gap-8 lg:gap-10 justify-center xl:py-3">
@@ -56,24 +59,25 @@ const Quick = () => {
                     réagissez vite.
                   </span>
                 </h4>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  {steps.map((step, index) => (
-                    <div
-                      key={index}
-                      className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4 lg:border border-[#574D63] StepByStepBlock"
-                    >
-                      <div className="hidden lg:block space-y-2">
-                        <span className="text-white text-xs">
-                          {step.number}
-                        </span>
-                        <h4 className="text-white text-22">{step.title}</h4>
+                <div className="relative">
+                  <div className="grid grid-cols-1 lg:grid-cols-2">
+                    {steps.map((step, index) => (
+                      <div
+                        key={index}
+                        className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4 lg:border border-[#574D63] StepByStepBlock"
+                      >
+                        <div className="hidden lg:block space-y-2">
+                          <span className="text-white text-xs">
+                            {step.number}
+                          </span>
+                          <h4 className="text-white text-22">{step.title}</h4>
+                        </div>
+                        <div className="flex flex-col gap-2 text-gray-light text-sm xl:text-base">
+                          <p>{step.description}</p>
+                        </div>
                       </div>
-                      <div className="flex flex-col gap-2 text-gray-light text-sm xl:text-base">
-                        <p>{step.description}</p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
                 <div className="bottomFade">
                   <Btn text="Testez NMS Audit" href="/" />

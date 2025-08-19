@@ -127,7 +127,7 @@ export const BottomFade = () => {
           trigger: el,
           start: "top 75%",
           toggleActions: "play none none reverse",
-          markers: true,
+          markers: false,
         },
       }
     );

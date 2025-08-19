@@ -1,6 +1,8 @@
+import React, { useRef } from "react";
 import img1 from "../../assets/shield-page-quick.webp";
 import bg from "../../assets/shield-page-quick-img-bg.webp";
 import Btn from "../../components/btn";
+import CustomCursor from "../../components/CustomCursor";
 
 const steps = [
   {
@@ -28,8 +30,12 @@ const steps = [
   },
 ];
 const Quick = () => {
+  const sectionRef = useRef(null);
+
   return (
-    <section className="relative z-5 overflow-hidden pt-10 md:pt-5 xl:pt-0 md:pb-44 bg-primary-dark">
+    <section ref={sectionRef} className="relative z-5 overflow-hidden pt-10 md:pt-5 xl:pt-0 md:pb-44 bg-primary-dark">
+      <CustomCursor targetRef={sectionRef} size={50} color="white" />
+
       {/* <d iv className="custom-container"> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 max-lg:gap-16 gap-15 lg:align-center max-md:px-15 md:pl-6 xl:pl-8">
         <div className="h-full w-full max-w-[680px] mx-auto">

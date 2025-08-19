@@ -1,4 +1,3 @@
-import React from "react";
 import MainLayout from "../../layouts/MainLayout";
 import MilitarySolution from "../Sentinel/MilitarySolution";
 import icon1 from "../../assets/audit-page-militarySolution-1.svg";

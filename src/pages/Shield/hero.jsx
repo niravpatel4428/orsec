@@ -18,7 +18,7 @@ const Hero = () => {
             </div>
             <div className="w-full md:max-w-md xl:max-w-xl lg:px-5 text-center">
               <div className="flex flex-col justify-center items-center gap-6 xl:gap-10">
-                <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl leading-130 loadingAnimated-title">
+                <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl leading-130 font-bold loadingAnimated-title">
                   <span>NMS Shield</span>
                 </h1>
 

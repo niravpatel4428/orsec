@@ -31,7 +31,7 @@ const MilitarySolution = ({ features, mainTitle }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-15 mb-7 md:mb-14 xxl:mb-20">
           <div className="md:col-span-7">
             <div>
-              <h2 className="text-light text-lg sm:text-xl md:text-26 lg:text-28 xl:text-35 !leading-130 animated-title">
+              <h2 className="text-light text-lg sm:text-xl md:text-26 lg:text-28 xl:text-35 xxl:text-40 !leading-130 animated-title">
                 {titleParts.map((part, index) => (
                   <span key={index}>
                     {part}

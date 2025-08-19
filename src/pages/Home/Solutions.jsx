@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router";
 import plus from "../../assets/round-plus-with-bg.svg";
 import solution3 from "../../assets/solution-card-3.svg";
 import solution2 from "../../assets/solution-card-2.svg";
 import solution1 from "../../assets/solution-card-1.svg";
+import CustomCursor from "../../components/CustomCursor";
 
 const solutions = [
   {
@@ -36,8 +37,15 @@ const solutions = [
 ];
 
 const Solutions = () => {
+  const sectionRef = useRef(null);
+
   return (
-    <section className="relative pb-12 md:pb-10 pt-16 md:pt-14">
+    <section
+      ref={sectionRef}
+      className="relative pb-12 md:pb-10 pt-16 md:pt-14"
+    >
+      <CustomCursor targetRef={sectionRef} size={50} color="white" />
+
       <div className="custom-container">
         <div className="mb-10">
           <h5 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 bottomFade">

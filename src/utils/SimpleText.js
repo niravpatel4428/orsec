@@ -25,19 +25,21 @@ export const LoadingBottomFade = () => {
 };
 
 export const LoadingSimpleText = () => {
-  gsap.utils.toArray(".loadingAnimated-title span").forEach((el) => {
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: "60%" },
-      {
-        opacity: 1,
-        y: "0%",
-        duration: 1,
-        ease: "power3.out",
-        delay: 1.6,
-      }
-    );
-  });
+  gsap.utils
+    .toArray(".loadingAnimated-title span , .loadingAnimated-title")
+    .forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: "60%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          delay: 1.6,
+        }
+      );
+    });
 };
 
 export const LoadingBlurTextReveal = () => {
@@ -96,7 +98,7 @@ export const LoadingStepByStepBlock = () => {
   gsap.utils.toArray(".loadingStepByStepBlock").forEach((el) => {
     gsap.fromTo(
       el,
-      { y: 20,opacity: 0, },
+      { y: 20, opacity: 0 },
       {
         y: 0,
         opacity: 1,

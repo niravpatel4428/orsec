@@ -16,12 +16,12 @@ const AboutBanner = () => {
       <div className="relative">
         <div className="custom-container">
           <div className="flex flex-wrap flex-col text-center gap-5 md:gap-8 lg:gap-9">
-            <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl leading-130 animated-title">
+            <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl leading-130 loadingAnimated-title">
               <span>
                 Orsec <br className="block sm:hidden" /> Technologies SAS
               </span>
             </h1>
-            <div className="flex flex-wrap flex-col gap-5 text-[19px] md:text-2xl lg:text-3xl text-gray-light leading-150 bottomFade">
+            <div className="flex flex-wrap flex-col gap-5 text-[19px] md:text-2xl lg:text-3xl text-gray-light leading-150 loadingBottomFade">
               <p className="leading-[inherit]">Technologies 100% Françaises</p>
             </div>
           </div>

@@ -9,7 +9,6 @@ import ShieldPage from "./pages/Shield/ShieldPage";
 import ContactPage from "./pages/Contact/ContactPage";
 import LegalNoticesPage from "./pages/LegalNotices/LegalNoticesPage";
 import ScrollToTop from "./components/ScrollToTop";
-// import LogoLoader from "./components/LogoLoader";
 import {
   SimpleText,
   BlurTextReveal,
@@ -24,6 +23,7 @@ import {
   LoadingStepByStepShow,
   LoadingStepByStepBlock,
 } from "./utils/SimpleText";
+import RouteChangeLoader from "./components/RouteChangeLoader";
 
 function App() {
   useEffect(() => {
@@ -42,23 +42,20 @@ function App() {
   }, []);
   return (
     <>
-      {/* <LoaderProvider> */}
-      {/* <LogoLoader /> */}
-
       <Router>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/sentinel" element={<SentinelPage />} />
-          <Route path="/audit" element={<AuditPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/shield" element={<ShieldPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/legalnotices" element={<LegalNoticesPage />} />
-        </Routes>
-        {/* <AppContent /> */}
+        <RouteChangeLoader>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/sentinel" element={<SentinelPage />} />
+            <Route path="/audit" element={<AuditPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/shield" element={<ShieldPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/legalnotices" element={<LegalNoticesPage />} />
+          </Routes>
+        </RouteChangeLoader>
       </Router>
-      {/* </LoaderProvider> */}
     </>
   );
 }

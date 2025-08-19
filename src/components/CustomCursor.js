@@ -1,8 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 
-const CustomCursor = ({ targetRef, size = 50, color = "white", blendMode = "difference" }) => {
+const CustomCursor = ({
+  targetRef,
+  size = 50,
+  color = "white",
+  blendMode = "difference",
+  smoothness = 0.15, // smaller = smoother/laggier trail
+}) => {
   const cursorRef = useRef(null);
   const [isInside, setIsInside] = useState(false);
+
+  // Store mouse position & animated position
+  const mouse = useRef({ x: 0, y: 0 });
+  const pos = useRef({ x: 0, y: 0 });
+  const rafId = useRef(null);
 
   useEffect(() => {
     const section = targetRef.current;
@@ -10,8 +21,8 @@ const CustomCursor = ({ targetRef, size = 50, color = "white", blendMode = "diff
     if (!section || !cursor) return;
 
     const moveCursor = (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
     };
 
     const handleEnter = () => setIsInside(true);
@@ -21,12 +32,26 @@ const CustomCursor = ({ targetRef, size = 50, color = "white", blendMode = "diff
     section.addEventListener("mouseenter", handleEnter);
     section.addEventListener("mouseleave", handleLeave);
 
+    // Animation loop for smooth trailing
+    const animate = () => {
+      pos.current.x += (mouse.current.x - pos.current.x) * smoothness;
+      pos.current.y += (mouse.current.y - pos.current.y) * smoothness;
+
+      cursor.style.left = `${pos.current.x}px`;
+      cursor.style.top = `${pos.current.y}px`;
+
+      rafId.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
     return () => {
       section.removeEventListener("mousemove", moveCursor);
       section.removeEventListener("mouseenter", handleEnter);
       section.removeEventListener("mouseleave", handleLeave);
+      cancelAnimationFrame(rafId.current);
     };
-  }, [targetRef]);
+  }, [targetRef, smoothness]);
 
   return (
     <div
@@ -40,7 +65,7 @@ const CustomCursor = ({ targetRef, size = 50, color = "white", blendMode = "diff
         mixBlendMode: blendMode,
         pointerEvents: "none",
         transform: "translate(-50%, -50%)",
-        transition: "opacity 200ms ease, transform 350ms ease",
+        transition: "opacity 200ms ease",
         opacity: isInside ? 1 : 0,
         zIndex: 1000,
       }}

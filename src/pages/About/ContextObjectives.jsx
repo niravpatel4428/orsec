@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
+import CustomCursor from "../../components/CustomCursor";
 
 const ContextObjectives = () => {
+  const sectionRef = useRef(null);
   const objective_blocks = [
     {
       id: "01",
@@ -25,8 +27,9 @@ const ContextObjectives = () => {
     },
   ];
   return (
-    <section className="pt-16 pb-4 lg:py-24">
+    <section ref={sectionRef} className="pt-16 pb-4 lg:py-24">
       <div className="custom-container">
+        <CustomCursor targetRef={sectionRef} size={50} color="white" />
         <div className="flex flex-wrap flex-col gap-11">
           <div className="flex flex-wrap items-center gap-6 md:gap-14 lg:gap-20">
             <div className="flex-initial lg:max-w-96 w-full">

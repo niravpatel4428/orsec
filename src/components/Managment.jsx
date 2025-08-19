@@ -44,7 +44,7 @@ const Managment = ({
         scrollTrigger: {
           trigger: containerRef.current,
           pin: true,
-          scrub: 1,
+          scrub: 2,
           start: "top top",
           end: `+=${tabs.length * 100}%`,
           invalidateOnRefresh: true,
@@ -210,7 +210,7 @@ const Managment = ({
         <div className="relative pt-0">
           <div className="custom-container">
             <div className="grid grid-cols-12 gap-4">
-              {/* {functionsList === "" && ( */}
+              {functionsList.length > 0 && (
                 <div className="col-span-6">
                   <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
                     {functionsTitle && (
@@ -226,8 +226,8 @@ const Managment = ({
                     </ul>
                   </div>
                 </div>
-              {/* )}  */}
-              {/* {utilitiesList === "" && ( */}
+              )} 
+               {utilitiesList.length > 0 && (
                 <div className="col-span-6">
                   <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
                     {utilitiesTitle && (
@@ -243,7 +243,7 @@ const Managment = ({
                     </ul>
                   </div>
                 </div>
-              {/* )} */}
+              )}
             </div>
           </div>
         </div>

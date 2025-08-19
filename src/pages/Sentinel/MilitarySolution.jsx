@@ -29,7 +29,7 @@ const MilitarySolution = ({ features, mainTitle }) => {
     <section className="relative mb-14 md:mb-9">
       <div className="custom-container">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-15 mb-7 md:mb-14 xxl:mb-20">
-          <div className="md:col-span-7">
+          <div className="md:col-span-8">
             <div>
               <h2 className="text-light text-lg sm:text-xl md:text-26 lg:text-28 xl:text-35 xxl:text-40 !leading-130 animated-title">
                 {titleParts.map((part, index) => (
@@ -41,7 +41,7 @@ const MilitarySolution = ({ features, mainTitle }) => {
               </h2>
             </div>
           </div>
-          <div className="col-span-5 hidden md:block">
+          <div className="col-span-4 hidden md:block">
             <div className="h-full flex justify-end items-end bottomFade">
               <Btn text="Testez NMS Sentinel" href="/" />
             </div>

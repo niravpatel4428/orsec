@@ -1,20 +1,6 @@
-import React, { useEffect, useState } from "react";
 import logo from "../assets/main-logo.svg";
 
 const LogoLoader = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate short loading delay (can be adjusted)
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500); // 1.5 seconds
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!isLoading) return null;
-
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center z-[9999] transition-opacity duration-500">
       <div className="animate-breathing">

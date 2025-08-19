@@ -15,7 +15,7 @@ const Hero = () => {
         <div className="absolute top-0 lg:relative h-full w-full max-w-screen-lg xl:max-w-screen-xl xxl:max-w-screen-xxl mx-auto">
           <div className="custom-contaier">
             <div className="relative z-5 w-full max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl xxl:max-w-6xl mx-auto text-center max-sm:px-5 pt-28 md:pt-36 xl:pt-44">
-              <h1 className="relative text-light text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl xxl:text-40 !leading-130 animated-title">
+              <h1 className="relative text-light text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl xxl:text-40 !leading-130 loadingAnimated-title">
                 <span>
                   Identifiez les intrusions sur votre réseau, grâce à des
                 </span>
@@ -28,7 +28,7 @@ const Hero = () => {
             <div className="absolute top-1/2 translate-y-20 xl:translate-y-28 left-10 xl:left-20 z-5">
               <div className="w-full max-w-64 xl:max-w-80 xxl:max-w-[349px]">
                 <div className="border-l border-accent-dark p-4 xl:p-6 backdrop-blur-md">
-                  <p className="text-light text-base xl:text-lg xxl:text-22 blur-title">
+                  <p className="text-light text-base xl:text-lg xxl:text-22 loadingBlur-title">
                     Surveillance en temps réel, autonome et permanente.
                   </p>
                 </div>
@@ -37,7 +37,7 @@ const Hero = () => {
             <div className="absolute top-1/2 translate-y-20 xl:translate-y-28 left-1/2 -translate-x-24 z-5">
               <div className="w-full max-w-64 xl:max-w-80 xxl:max-w-[349px]">
                 <div className="border-l border-accent-dark p-4 xl:p-6 backdrop-blur-md">
-                  <p className="text-light text-base xl:text-lg xxl:text-22 blur-title">
+                  <p className="text-light text-base xl:text-lg xxl:text-22 loadingBlur-title">
                     Analyse rapide post-incident et conformité.
                   </p>
                 </div>
@@ -46,7 +46,7 @@ const Hero = () => {
             <div className="absolute top-1/2 translate-y-24 xl:translate-y-32 right-3 xl:right-14 z-5">
               <div className="w-full max-w-64 xl:max-w-80 xxl:max-w-[366px]">
                 <div className="border-l border-accent-dark p-4 xl:p-6 backdrop-blur-md">
-                  <p className="text-light text-base xl:text-lg xxl:text-22 blur-title">
+                  <p className="text-light text-base xl:text-lg xxl:text-22 loadingBlur-title">
                     Protection sur mesure pour réseaux haute performance.
                   </p>
                 </div>
@@ -120,6 +120,3 @@ const Hero = () => {
 };
 
 export default Hero;
-// background:
-// linear-gradient(0deg, rgba(2, 3, 12, 0.00) 67.09%, #02030C 95.12%),
-// linear-gradient(180deg, rgba(2, 3, 12, 0.00) 52.39%, #02030C 83.12%),

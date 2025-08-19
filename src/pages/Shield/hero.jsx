@@ -18,18 +18,18 @@ const Hero = () => {
             </div>
             <div className="w-full md:max-w-md xl:max-w-xl lg:px-5 text-center">
               <div className="flex flex-col justify-center items-center gap-6 xl:gap-10">
-                <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl  leading-130 animated-title">
+                <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl leading-130 loadingAnimated-title">
                   <span>NMS Shield</span>
                 </h1>
 
-                <div className="space-y-2 text-light text-xs md:text-xl lg:text-2xl bottomFade">
+                <div className="space-y-2 text-light text-xs md:text-xl lg:text-2xl loadingBottomFade">
                   <p>
                     L&apos;outil de cyberdéfense le plus avancé pour les
                     Datacenters, les Opérateurs et les Gouvernements.
                   </p>
                 </div>
 
-                <div className="absolute max-md:bottom-20 md:relative flex justify-center bottomFade">
+                <div className="absolute max-md:bottom-20 md:relative flex justify-center loadingBottomFade">
                 <Btn text="Testez NMS Shield" href="/" />
                 </div>
               </div>

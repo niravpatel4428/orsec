@@ -50,7 +50,7 @@ const Quick = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 max-lg:gap-16 gap-15">
             <div className="max-lg:order-2 lg:col-span-6">
               <div className="flex flex-col gap-8 lg:gap-10 justify-center xl:py-3">
-                <h4 className="text-light text-40 leading-130  animated-title">
+                <h4 className="text-light text-40 leading-130 animated-title">
                   Après un incident, <br />
                   <span className="text-gray-light !leading-tight">
                     réagissez vite.

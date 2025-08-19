@@ -117,7 +117,7 @@ const Managment = ({
                 <h4 className="text-light text-32 md:text-40 bottomFade">
                   {heading}
                   {subHeading && (
-                    <span className="text-gray-medium"> {subHeading}</span>
+                    <span className="text-gray-medium">{subHeading}</span>
                   )}
                 </h4>
               )}

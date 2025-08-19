@@ -3,7 +3,7 @@ import Btn from "../../components/btn";
 
 const FeatureCard = ({ icon, title, description }) => {
   return (
-    <div className="h-full border border-[#2D2C3C] bg-techGradient rounded-lg flex flex-col justify-between items-center gap-9 md:gap-7 p-8 sm:p-5 xl:p-10 StepByStepBlock">
+    <div className="h-full border border-[#2D2C3C] bg-techGradient rounded-lg flex flex-col justify-between items-center gap-9 md:gap-7 p-8 sm:p-5 xl:p-10">
       <div className="h-44 lg:h-52 xl:h-60 xxl:h-72 flex justify-center items-center">
         <img
           src={icon}
@@ -11,7 +11,7 @@ const FeatureCard = ({ icon, title, description }) => {
           className="object-contain scale-75 lg:scale-90"
         />
       </div>
-      <div className="flex flex-col gap-7 lg:gap-8">
+      <div className="flex flex-col gap-7 lg:gap-8 multiParagraph">
         <h2 className="text-light text-2xl md:text-28 xl:text-32 !leading-none">
           {title}
         </h2>

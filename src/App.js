@@ -1,9 +1,5 @@
 import { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 import "./App.css";
 import HomePage from "./pages/Home/HomePage";
 import SentinelPage from "./pages/Sentinel/SentinelPage";
@@ -14,7 +10,20 @@ import ContactPage from "./pages/Contact/ContactPage";
 import LegalNoticesPage from "./pages/LegalNotices/LegalNoticesPage";
 import ScrollToTop from "./components/ScrollToTop";
 // import LogoLoader from "./components/LogoLoader";
-import { SimpleText, BlurTextReveal, BottomFade, MultiParagraphDetails, StepByStepShow, StepByStepBlock } from "./utils/SimpleText";
+import {
+  SimpleText,
+  BlurTextReveal,
+  BottomFade,
+  MultiParagraphDetails,
+  StepByStepShow,
+  StepByStepBlock,
+  LoadingBottomFade,
+  LoadingSimpleText,
+  LoadingBlurTextReveal,
+  LoadingMultiParagraphDetails,
+  LoadingStepByStepShow,
+  LoadingStepByStepBlock,
+} from "./utils/SimpleText";
 
 function App() {
   useEffect(() => {
@@ -24,6 +33,12 @@ function App() {
     MultiParagraphDetails();
     StepByStepShow();
     StepByStepBlock();
+    LoadingBottomFade();
+    LoadingSimpleText();
+    LoadingBlurTextReveal();
+    LoadingMultiParagraphDetails();
+    LoadingStepByStepShow();
+    LoadingStepByStepBlock();
   }, []);
   return (
     <>

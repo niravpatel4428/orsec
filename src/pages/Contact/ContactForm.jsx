@@ -20,11 +20,11 @@ const ContactForm = () => {
       <div className="flex flex-col justify-center max-w-700 w-full mx-auto px-4 lg:p-8">
         <div className="mb-9">
           <div className="mb-2 md:mb-8">
-            <h2 className="text-light text-[35px] md:text-40 leading-130 animated-title">
+            <h2 className="text-light text-[35px] md:text-40 leading-130 loadingAnimated-title">
               <span>Je souhaite tester NMS Audit</span>
             </h2>
           </div>
-          <div className="text-base text-gray-medium gap-5 bottomFade">
+          <div className="text-base text-gray-medium gap-5 loadingBottomFade">
             <p>
               Besoin d'une main expérimentée et compétente pour protéger vos
               données des cyber attaques ? Remplissez le formulaire pour obtenir
@@ -36,7 +36,7 @@ const ContactForm = () => {
         <form>
           <div className="flex flex-wrap gap-4">
             {/* Prénom */}
-            <div className="flex-1 StepByStepBlock">
+            <div className="flex-1 loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-2">
                 <input
                   type="text"
@@ -52,7 +52,7 @@ const ContactForm = () => {
               </div>
             </div>
             {/* Nom */}
-            <div className="flex-1 StepByStepBlock">
+            <div className="flex-1 loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-2">
                 <input
                   type="text"
@@ -68,7 +68,7 @@ const ContactForm = () => {
               </div>
             </div>
             {/* Société */}
-            <div className="flex-auto w-full StepByStepBlock">
+            <div className="flex-auto w-full loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-2">
                 <input
                   type="text"
@@ -83,7 +83,7 @@ const ContactForm = () => {
                 </label>
               </div>
             </div>
-            <div className="flex-auto w-full StepByStepBlock">
+            <div className="flex-auto w-full loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-2">
                 <input
                   type="text"
@@ -99,7 +99,7 @@ const ContactForm = () => {
               </div>
             </div>
             {/* address */}
-            <div className="flex-1 StepByStepBlock">
+            <div className="flex-1 loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-2">
                 <input
                   type="text"
@@ -115,7 +115,7 @@ const ContactForm = () => {
               </div>
             </div>
             {/* code */}
-            <div className="flex-1 md:flex-initial md:w-48 StepByStepBlock">
+            <div className="flex-1 md:flex-initial md:w-48 loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-2">
                 <input
                   type="text"
@@ -131,7 +131,7 @@ const ContactForm = () => {
               </div>
             </div>
             {/* telephone */}
-            <div className="flex-auto w-full StepByStepBlock">
+            <div className="flex-auto w-full loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-2">
                 <input
                   type="text"
@@ -147,7 +147,7 @@ const ContactForm = () => {
               </div>
             </div>
             {/* email */}
-            <div className="flex-auto w-full StepByStepBlock">
+            <div className="flex-auto w-full loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-1">
                 <input
                   type="text"
@@ -166,7 +166,7 @@ const ContactForm = () => {
               </p>
             </div>
             {/* message */}
-            <div className="flex-auto w-full StepByStepBlock">
+            <div className="flex-auto w-full loadingStepByStepBlock">
               <div className="flex flex-col-reverse gap-1 mb-2">
                 <input
                   type="text"
@@ -182,7 +182,7 @@ const ContactForm = () => {
               </div>
             </div>
             {/* NDA */}
-            <div className="flex-auto w-full StepByStepBlock">
+            <div className="flex-auto w-full loadingStepByStepBlock">
               <div className="flex gap-3 mb-3">
                 <input
                   type="checkbox"

@@ -86,7 +86,7 @@ const AuditPage = () => {
         imageSrc={observe}
       />
       <Quick />
-      <Managment
+      <Managment clsPt="py-20"
         tabs={tabs2}
         heading="Explorez en profondeur votre trafic réseau. "
         subHeading="Portail d’Investigation"
@@ -96,7 +96,7 @@ const AuditPage = () => {
         // utilitiesTitle=""
         utilitiesList={[]}
       />
-      <Managment
+      <Managment clsPt="py-20"
         tabs={tabs}
         heading="Explorez en profondeur votre trafic réseau. "
         subHeading="Portail d’Investigation"

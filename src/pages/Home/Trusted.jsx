@@ -14,23 +14,23 @@ const Trusted = () => {
             Ils nous ont confié leur sécurité
           </h6>
         </div>
-        <div className="flex max-md:flex-wrap justify-between items-center gap-10 lg:gap-16 xl:gap-24 md:h-[85px] bottomFade">
-            <div className="max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
+        <div className="flex max-md:flex-wrap justify-between items-center max-[389px]:gap-4 gap-10 lg:gap-16 xl:gap-24 md:h-[85px] bottomFade">
+            <div className="max-[389px]:size-28 max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
                 <img src={trusted1} alt="trusted" className="object-contain" />
             </div>
-            <div className="max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
+            <div className="max-[389px]:size-28 max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
                 <img src={trusted2} alt="trusted" className="object-contain" />
             </div>
-            <div className="max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
+            <div className="max-[389px]:size-28 max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
                 <img src={trusted3} alt="trusted" className="object-contain" />
             </div>
-            <div className="max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
+            <div className="max-[389px]:size-28 max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
                 <img src={trusted4} alt="trusted" className="object-contain" />
             </div>
-            <div className="max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
+            <div className="max-[389px]:size-28 max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
                 <img src={trusted5} alt="trusted" className="object-contain" />
             </div>
-            <div className="max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
+            <div className="max-[389px]:size-28 max-sm:size-32 sm:w-1/3 md:w-1/6 flex justify-center items-center">
                 <img src={trusted6} alt="trusted" className="object-contain" />
             </div>
         </div>

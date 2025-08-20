@@ -84,7 +84,7 @@ const ShieldPage = () => {
       </div>
 
       <InfoTable infoItems={infoItems} />
-      <Managment
+      <Managment clsPt="py-20"
         tabs={tabs}
         heading="Gardez la maîtrise de votre cybersécurité en quelques clics."
         subHeading=" Portail de Management"
@@ -104,7 +104,7 @@ const ShieldPage = () => {
           "Flexibilité à la carte : désactivez les modules optionnels, tel le serveur LLM IA on‑premise, selon vos besoins.",
         ]}
       />
-      <Managment
+      <Managment clsPt="py-20"
         tabs={tabs2}
         heading="Analysez votre trafic réseau dans ses moindres détails. "
         subHeading=" Portail d’Investigation"

@@ -94,7 +94,7 @@ const SentinelPage = () => {
       />
       <Intelligence />
       <Attackers />
-      <Managment
+      <Managment clsPt="py-20"
         tabs={tabs}
         heading="Pilotez votre cybersécurité en quelques clics. "
         subHeading="Portail de Management"
@@ -114,7 +114,7 @@ const SentinelPage = () => {
           "Adaptation aux besoins client via l’activation ou désactivation de modules comme le serveur LLM IA On-Premise en option.",
         ]}
       />
-      <Managment
+      <Managment clsPt="py-20"
         tabs={tabs2}
         heading="Plongez au cœur de votre trafic réseau."
         subHeading="Portail d’Investigation"

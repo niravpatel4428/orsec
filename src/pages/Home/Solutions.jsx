@@ -55,6 +55,7 @@ const Solutions = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {solutions.map((solution, index) => (
+            
             <div key={index} className="relative flex flex-col gap-6 group">
               <div className="relative p-6 border bordre-white rounded-10 transition-all duration-300">
                 <div className="absolute top-6 right-6 z-6">

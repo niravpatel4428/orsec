@@ -1,10 +1,12 @@
 import React from "react";
-import bg from "../../assets/sentinel-bg.webp";
+// import bg from "../../assets/sentinel-bg.webp";
 import machine from "../../assets/sentinel-machine.png";
 import Btn from "../../components/btn";
+import LightRays from "../../components/animationComp/Rays";
 const Hero = () => {
   return (
     <section className="relative mim-h-screen pt-52 -mt-[68px] lg:-mt-20">
+      {/* content */}
       <div className="custom-container">
         <div className="w-full max-w-[810px] mx-auto">
           <div className="flex flex-col justify-center items-center gap-6 xl:gap-9 text-center">
@@ -29,9 +31,18 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute inset-0 -z-1">
-        <img src={bg} alt="icon" className="object-cover w-full h-full" />
-      </div>
+      <LightRays
+        raysOrigin="top-center"
+        raysColor="#8D3BEB"
+        raysSpeed={1.5}
+        lightSpread={1.2}
+        rayLength={1.4}
+        followMouse={true}
+        mouseInfluence={0.7}
+        noiseAmount={0}
+        distortion={3}
+        className="custom-rays -mt-2"
+      />
       <div className="absolute bottom-0 w-full h-64 z-2 bg-bottomGradient bg-no-repeat"></div>
     </section>
   );

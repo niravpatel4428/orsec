@@ -26,7 +26,7 @@ const Visibilty = () => {
               <div className="max-lg:order-2 col-span-12 lg:col-span-6 xxl:col-span-5">
                 <div className="px-15 py-9 md:p-6 lg:p-8 xxl:p-12 lg:!pr-0">
                   <h4 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 mb-4 md:mb-10 bottomFade">
-                    {visibilityData.title}{" "}
+                    {visibilityData.title}
                     <span className="text-gray-medium">
                       {visibilityData.subtitle}
                     </span>

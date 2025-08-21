@@ -13,7 +13,7 @@ import image1 from "../../assets/tab-block-1.webp";
 import image2 from "../../assets/tab-block-2.webp";
 import image3 from "../../assets/tab-block-3.webp";
 import image4 from "../../assets/tab-block-4.webp";
-import Managment from "../../components/Managment";
+import Managment from "../../components/tabbing/Managment";
 const infoItems = [
   {
     number: "01",
@@ -74,9 +74,9 @@ const ShieldPage = () => {
       <Quick />
 
       <div className="custom-container max-md:pt-10">
-        <h4 className="text-light text-32 md:text-40 leading-130">
+        <h4 className="text-light text-32 xl:text-4xl xxl:text-40 leading-130">
           <span> Pourquoi travailler avec </span>
-          <br className="hidden md:block" />{" "}
+          <br className="hidden md:block" />
           <span>
             <p className="text-gray-light"> ORSEC TECHNOLOGIES ?</p>
           </span>

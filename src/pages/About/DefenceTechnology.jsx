@@ -40,24 +40,24 @@ const DefenceTechnology = () => {
         <div className="custom-container">
           <div className="max-w-80 sm:max-w-1200 w-full mx-auto text-center">
             <div className="flex flex-wrap flex-col gap-7 md:gap-9 lg:gap-12">
-              <h2 className="text-light text-4xl max-[370px]:text-2xl md:text-32 lg:text-40 leading-130 max-w-[760px] w-full mx-auto animated-title">
-                <span>Une technologie de défense…</span>{" "}
+              <h2 className="text-light text-4xl max-[370px]:text-2xl md:text-32 xl:text-4xl xxl:text-40 leading-120 max-w-[760px] w-full mx-auto animated-title">
+                <span>Une technologie de défense…</span>
                 <span>désormais à votre portée.</span>
               </h2>
 
               <div className="flex flex-wrap flex-col gap-5 lg:text-2xl leading-150 text-white bottomFade">
                 <p>
-                  Notre objectif principal est de{" "}
+                  Notre objectif principal est de
                   <span className="text-gray-light">protéger notre pays</span>,
                   en particulier les Organisations d'Importance Vitale, les
-                  hôpitaux, les administrations et les entités essentielles,{" "}
+                  hôpitaux, les administrations et les entités essentielles,
                   <span className="text-gray-light">
                     contre les cyberattaques
                   </span>
-                  . Nous mettons l'accent sur l'innovation et utilisons des{" "}
+                  . Nous mettons l'accent sur l'innovation et utilisons des
                   <span className="text-gray-light">
                     technologies militaires
-                  </span>{" "}
+                  </span>
                   pour fournir des solutions avancées et sur mesure.
                 </p>
               </div>

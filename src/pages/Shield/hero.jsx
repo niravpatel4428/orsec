@@ -1,7 +1,9 @@
 import React from "react";
 import Btn from "../../components/btn";
 import machine from "../../assets/shield-page-hero-machine.webp";
-import bg from "../../assets/hield-page-hero-bg.webp";
+// import bg from "../../assets/hield-page-hero-bg.webp";
+import LightRays from "../../components/animationComp/Rays";
+
 const Hero = () => {
   return (
     <section className="relative -mt-[68px] lg:-mt-20 md:min-h-screen flex items-center justify-center pb-36 pt-36 md:pb-28 lg:pt-36 lg:pb-32">
@@ -30,19 +32,27 @@ const Hero = () => {
                 </div>
 
                 <div className="absolute max-md:bottom-20 md:relative flex justify-center loadingBottomFade">
-                <Btn text="Testez NMS Shield" href="/" />
+                  <Btn text="Testez NMS Shield" href="/" />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* bckground image */}
-      <div className="absolute inset-0 -z-2">
-        <img src={bg} alt="bg" className="h-full w-full object-cover" />
-      </div>
-
-      {/* bottom graadient */}
+      {/* background effect */}
+      <LightRays
+        raysOrigin="left"
+        raysColor="#8D3BEB"
+        raysSpeed={0.2}
+        lightSpread={0.9}
+        rayLength={2}
+        followMouse={true}
+        mouseInfluence={1}
+        noiseAmount={0}
+        distortion={2}
+        className="custom-rays -mt-2"
+      />
+      {/* gradient */}
       <div className="absolute bottom-0 w-full h-36 -z-1 bg-bottomGradient bg-no-repeat"></div>
     </section>
   );

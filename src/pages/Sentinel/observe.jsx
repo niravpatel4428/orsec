@@ -28,8 +28,8 @@ const Observe = ({ title, subTitle, description, imageSrc }) => {
     <section className="relative mt-12 mb-24 md:mt-9 md:mb-24">
       <div className="custom-container">
         <div className="relative pt-48 md:pt-56 lg:pt-72 xxl:pt-363 max-w-[1234px] mx-auto">
-          <div className="text-center mb-28 md:mb-20 lg:mb-28  xxl:mb-40">
-            <h3 className="text-light text-32 lg:text-40 !leading-130 bottomFade" dangerouslySetInnerHTML={{ __html: title }}/>
+          <div className="text-center mb-28 md:mb-20 lg:mb-28 xxl:mb-40">
+            <h3 className="text-light text-32 lg:text-40 !leading-130 " dangerouslySetInnerHTML={{ __html: title }}/>
           </div>
 
           <ObserveContent subTitle={subTitle} description={description} />

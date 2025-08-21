@@ -3,7 +3,7 @@ import Btn from "../../components/btn";
 
 const About = () => {
   return (
-    <section className="relative z-5 lg:pt-10 -mt-12 lg:-mt-36 xl:-mt-40 xxl:-mt-36 mb-14 md:mb-16 xl:mb-24">
+    <section className="relative z-5 lg:pt-10 -mt-12 lg:-mt-36 xl:-mt-40 xxl:-mt-36 mb-14 md:mb-16 xl:mb-20 xxl:mb-24">
       <div className="custom-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-15">
           <div className="lg:col-span-6">
@@ -16,7 +16,7 @@ const About = () => {
               <h2 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 bottomFade">
                 <span className="text-muted">175 jours</span> c&apos;est le
                 temps moyen qu&apos;il faut à une structure pour
-                s&apos;apercevoir qu&apos;elle est{" "}
+                s&apos;apercevoir qu&apos;elle est
                 <span className="text-muted">
                   la cible d&apos;une cyberattaque.
                 </span>

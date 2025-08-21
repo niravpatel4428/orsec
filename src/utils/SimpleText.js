@@ -5,6 +5,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 // hero banner animation with 1.5s delay
 
+export const LoadingMainTitle = () => {
+  gsap.fromTo(
+    ".loadingWord",
+    {
+      opacity: 0,
+      y: "100%",
+    },
+    {
+      opacity: 1,
+      y: "0%",
+      duration: 1,
+      ease: "power3.out",
+      delay: 0.5,
+    }
+  );
+
+  return null;
+};
+
 export const LoadingBottomFade = () => {
   gsap.utils.toArray(".loadingBottomFade").forEach((el) => {
     gsap.fromTo(
@@ -25,21 +44,16 @@ export const LoadingBottomFade = () => {
 };
 
 export const LoadingSimpleText = () => {
-  gsap.utils
-    .toArray(".loadingAnimated-title span , .loadingAnimated-title")
-    .forEach((el) => {
-      gsap.fromTo(
-        el,
-        { y: "60%", opacity: 0 },
-        {
-          y: "0%",
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          delay: 1.6,
-        }
-      );
-    });
+  const tl = gsap.timeline({
+    delay: 1.6, // overall delay before starting
+    defaults: { ease: "power3.out", duration: 1 },
+  });
+
+  tl.fromTo(
+    ".loadingAnimated-title *",
+    { y: "100%", opacity: 0 },
+    { y: "0%", opacity: 1, stagger: 0.3 } // 0.3 sec gap between spans
+  );
 };
 
 export const LoadingBlurTextReveal = () => {
@@ -140,10 +154,11 @@ export const SimpleText = () => {
   gsap.utils.toArray(".animated-title span").forEach((el) => {
     gsap.fromTo(
       el,
-      { opacity: 0, y: "60%" },
+      { opacity: 0, y: "60%", skewY: 3 },
       {
         opacity: 1,
         y: "0%",
+        skewY: 0,
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
@@ -155,6 +170,7 @@ export const SimpleText = () => {
     );
   });
 };
+
 
 export const BlurTextReveal = () => {
   gsap.utils.toArray(".blur-title").forEach((el) => {
@@ -175,6 +191,7 @@ export const BlurTextReveal = () => {
           trigger: el,
           start: "top 85%",
           toggleActions: "play none none reverse",
+          stagger: 0.1,
         },
       }
     );

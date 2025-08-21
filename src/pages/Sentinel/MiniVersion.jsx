@@ -25,20 +25,20 @@ const MiniVersion = () => {
                   />
                 </div>
 
-                <ul className="space-y-2 my-9 multiParagraph">
-                  <li className="text-gray-medium text-base ">
+                <ul className="space-y-2 my-9 multiParagraph pl-7">
+                  <li className="text-gray-medium text-base list-disc">
                     Vision 360 sur tout votre réseau
                   </li>
-                  <li className="text-gray-medium text-base ">
+                  <li className="text-gray-medium text-base list-disc">
                     Solutions indétectables par les hackers
                   </li>
-                  <li className="text-gray-medium text-base ">
+                  <li className="text-gray-medium text-base list-disc">
                     Informations recevables devant la justice
                   </li>
-                  <li className="text-gray-medium text-base ">
+                  <li className="text-gray-medium text-base list-disc">
                     Moteur DPI 100% propriétaire (pas Open Source)
                   </li>
-                  <li className="text-gray-medium text-base ">
+                  <li className="text-gray-medium text-base list-disc">
                     Des millions d&apos;attaques identifiées et bloquées / mois
                   </li>
                 </ul>

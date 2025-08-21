@@ -125,7 +125,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 left-0 right-0 pt-15 z-50">
       <div className="custom-container">
-        <div className="bg-neutral-dark px-5 py-7px rounded-10 flex justify-between items-center gap-5 xl:gap-10">
+        <div className="bg-neutral-dark px-5 py-7px rounded-10 flex justify-between items-center gap-5 xl:gap-10 border border-[#2D2D31]">
           {/* brand logo */}
           <Link to="/" className="h-22 inline-block">
             <img src={logo} alt="icon" className="w-full h-full" />

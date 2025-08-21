@@ -148,10 +148,10 @@ const Managment = ({
     <>
       <section className={`relative ${clsPt} overflow-hidden`}>
         <div className="custom-container">
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 mb-2 md:mb-12">
-            <div>
+          <div className="relative grid grid-cols-1 md:grid-cols-12 gap-4 mb-2">
+            <div className="md:col-span-7">
               {heading && (
-                <h4 className="text-light text-32 md:text-40 bottomFade">
+                <h4 className="text-light text-32 xl:text-4xl xxl:text-40 !leading-130 bottomFade">
                   {heading}
                   {subHeading && (
                     <span className="text-gray-medium">{subHeading}</span>
@@ -160,17 +160,19 @@ const Managment = ({
               )}
             </div>
 
-            {description && (
-              <div className="flex flex-col justify-end items-end gap-2 bottomFade">
-                <p className="text-gray-medium text-base">{description}</p>
-              </div>
-            )}
+            <div className="md:col-span-5">
+              {description && (
+                <div className="h-full flex flex-col justify-end items-end gap-2 bottomFade">
+                  <p className="text-gray-medium text-base">{description}</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         {/* tabs */}
         <div
           ref={containerRef}
-          className="relative flex flex-col gap-20 pt-20 pb-24 h-full"
+          className="relative flex flex-col gap-20 pt-20 pb-10 h-full"
         >
           {/* tabbing tabs */}
           <div className="custom-container">
@@ -208,9 +210,9 @@ const Managment = ({
         {/* ul li  */}
         <div className="relative pt-8 h-full">
           <div className="custom-container">
-            <div className="grid grid-cols-12 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
               {functionsList.length > 0 && (
-                <div className="col-span-6">
+                <div className="lg:col-span-6">
                   <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
                     {functionsTitle && (
                       <h5 className="text-light text-2xl md:text-32 mb-11 bottomFade">
@@ -229,7 +231,7 @@ const Managment = ({
                 </div>
               )}
               {utilitiesList.length > 0 && (
-                <div className="col-span-6">
+                <div className="lg:col-span-6">
                   <div className="bg-tabbingCardGradient bg-no-repeat rounded-lg border border-[#2D2C3C] p-8">
                     {utilitiesTitle && (
                       <h5 className="text-light text-2xl md:text-32 mb-11 bottomFade">

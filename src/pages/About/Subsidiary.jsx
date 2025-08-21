@@ -10,20 +10,20 @@ const Subsidiary = () => {
             <img
               src={subsidiary_img}
               alt="subsidiary-image"
-              className="w-full max-w-full min-h-80 object-cover rounded-lg"
+              className="w-full max-w-full h-full min-h-80 object-cover rounded-lg"
             />
           </div>
           <div className="flex-1">
             <div className="flex flex-wrap flex-col gap-6">
               <h2 className="text-light text-2xl md:text-32 lg:text-40 leading-130 animated-title">
                 <span>
-                  Filiale du Groupe{" "}
+                  Filiale du Groupe
                   <p className="inline-block text-gray-light">SYLink</p>
                 </span>
               </h2>
               <div className="flex flex-wrap flex-col gap-4 text-base text-gray-medium leading-150 bottomFade">
                 <p className="leading-[inherit]">
-                  L'acquisition d'ORSEC Technologies par le{" "}
+                  L'acquisition d'ORSEC Technologies par le
                   <Link className="text-white">Groupe SYLink</Link>, annoncée le
                   26 février 2024, marque une étape significative dans
                   l'industrie de la cybersécurité française. Cette intégration

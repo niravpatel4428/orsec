@@ -1,13 +1,10 @@
-// import React, { useEffect } from "react";
-// import gsap from "gsap";
-// import { SimpleText, BlurTextReveal, BottomFade } from "../../utils/SimpleText";
+
 import blocks from "../../assets/blocks.webp";
 import blocksM from "../../assets/blocks-mobile.webp";
 import blocksT from "../../assets/blocks-tablet.webp";
 import blocksST from "../../assets/blocks-tablet-small.webp";
 
 const Hero = () => {
-
   return (
     <>
       <section className="relative lg:h-[900px] xl:h-[1150px] -mt-[68px] lg:-mt-20s">
@@ -17,7 +14,10 @@ const Hero = () => {
             <div className="relative z-5 w-full max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl xxl:max-w-6xl mx-auto text-center max-sm:px-5 pt-28 md:pt-36 xl:pt-44">
               <h1 className="relative text-light text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl xxl:text-40 !leading-130 loadingAnimated-title">
                 <span>
-                  <p className="inline-block text-gray-light">Identifiez les intrusions</p> sur votre réseau, grâce à des
+                  <p className="inline-block text-gray-light">
+                    Identifiez les intrusions
+                  </p>{" "}
+                  sur votre réseau, grâce à des
                 </span>
                 <br />
                 <span>solutions venant des Services de Renseignements.</span>
@@ -79,8 +79,8 @@ const Hero = () => {
           />
         </div>
 
+        {/* bacground gradien RIGHT side */}
         <div className="absolute inset-0 h-full w-full lg:max-w-screen-lg xl:max-w-screen-xl xxl:max-w-screen-xxl mx-auto">
-          {/* bacground gradien RIGHT side */}
           <div
             className="h-full w-10 absolute left-auto right-0 bottom-0"
             style={{

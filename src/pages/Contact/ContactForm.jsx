@@ -17,8 +17,8 @@ const ContactForm = () => {
           className="object-cover sm:object-top w-full h-full block md:hidden"
         />
       </div>
-      <div className="flex flex-col justify-center max-w-700 w-full mx-auto px-4 lg:p-8">
-        <div className="mb-9">
+      <div className="flex flex-col justify-center max-w-700 w-full mx-auto px-4 lg:p-8 ">
+        <div className="mb-9 lg:mt-24 xxl:mt-0">
           <div className="mb-2 md:mb-8">
             <h2 className="text-light text-[35px] md:text-40 leading-130 loadingAnimated-title">
               <span>Je souhaite tester NMS Audit</span>

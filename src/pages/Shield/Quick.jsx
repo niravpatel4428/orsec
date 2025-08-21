@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import img1 from "../../assets/shield-page-quick.webp";
 import bg from "../../assets/shield-page-quick-img-bg.webp";
 import Btn from "../../components/btn";
-import CustomCursor from "../../components/CustomCursor";
+import SpotlightCard from "../../components/animationComp/SpotlightCard";
 
 const steps = [
   {
@@ -33,15 +33,16 @@ const Quick = () => {
   const sectionRef = useRef(null);
 
   return (
-    <section ref={sectionRef} className="relative z-5 overflow-hidden pt-10 md:pt-5 xl:pt-0 md:pb-44 bg-primary-dark">
-      <CustomCursor targetRef={sectionRef} size={50} color="white" />
-
+    <section
+      ref={sectionRef}
+      className="relative z-5 overflow-hidden pt-10 md:pt-5 xl:pt-0 md:pb-32 lg:pb-36 xxl:pb-44 bg-primary-dark"
+    >
       {/* <d iv className="custom-container"> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 max-lg:gap-16 gap-15 lg:align-center max-md:px-15 md:pl-6 xl:pl-8">
         <div className="h-full w-full max-w-[680px] mx-auto">
           <div className="h-full flex flex-col gap-8 lg:gap-10 justify-center xl:py-3">
             <div className="flex flex-col gap-8">
-              <h4 className="text-light text-32 md:text-40 leading-130 animated-title">
+              <h4 className="text-light text-32 xl:text-4xl xxl:text-40 leading-130 animated-title">
                 <span>Une solution</span>
                 <br />
                 <span>clé en main</span>
@@ -56,20 +57,19 @@ const Quick = () => {
 
             <div className="grid grid-cols-2">
               {steps.map((step, index) => (
-                <div
-                  key={index}
-                  className="h-full py-4 px-3 lg:p-4 xxl:pr-14 flex flex-col gap-4 border border-[#574D63] StepByStepBlock"
-                >
-                  <div className="block space-y-2">
-                    <span className="text-white text-xs">{step.number}</span>
-                    <h4 className="text-white text-lg lg:text-22">
-                      {step.title}
-                    </h4>
+                <SpotlightCard key={index} outerClass="border border-[#574D63]">
+                  <div className="h-full py-4 px-3 lg:p-4 xxl:pr-14 flex flex-col gap-4 StepByStepBlock">
+                    <div className="block space-y-2">
+                      <span className="text-white text-xs">{step.number}</span>
+                      <h4 className="text-white text-lg lg:text-22">
+                        {step.title}
+                      </h4>
+                    </div>
+                    <div className="flex flex-col gap-2 text-gray-light text-xs md:text-sm xl:text-base">
+                      <p>{step.description}</p>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-2 text-gray-light text-xs md:text-sm xl:text-base">
-                    <p>{step.description}</p>
-                  </div>
-                </div>
+                </SpotlightCard>
               ))}
             </div>
 

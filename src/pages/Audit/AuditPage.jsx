@@ -11,7 +11,7 @@ import image1 from "../../assets/tab-block-1.webp";
 import image2 from "../../assets/tab-block-2.webp";
 import image3 from "../../assets/tab-block-3.webp";
 import image4 from "../../assets/tab-block-4.webp";
-import Managment from "../../components/Managment";
+import Managment from "../../components/tabbing/Managment";
 const newFeatures = [
   {
     icon: icon1,
@@ -77,20 +77,20 @@ const AuditPage = () => {
     <MainLayout>
       <Hero />
       <MilitarySolution
-        mainTitle="Une solution militaire pour vos opérations de <br /> sécurité ponctuelles"
+        mainTitle="Une solution militaire pour vos <br /> opérations de sécurité ponctuelles"
         features={newFeatures}
       />
       <Observe
-        title="Pas de sécurité sans visibilité"
+        title="Pas de sécurité <br /> sans visibilité"
         description={defaultDescription}
         imageSrc={observe}
       />
       <Quick />
       <Managment clsPt="py-20"
         tabs={tabs2}
-        heading="Explorez en profondeur votre trafic réseau. "
-        subHeading="Portail d’Investigation"
-        description="Le Portail d’Investigation offre une visibilité détaillée sur l’ensemble du trafic réseau capté par les sondes NMS ; c’est aussi l’espace où l’expert cybersécurité, l’analyste SOC ou le CISO peut détecter, interpréter et contrer les menaces."
+        heading="Reprenez la main sur votre cybersécurité en un clin d’œil.  "
+        subHeading="Portail de Management"
+        description="Le Portail de Management sert de tableau de bord central pour configurer, superviser et maintenir l’intégralité de l’architecture NMS Audit."
         // functionsTitle=""
         functionsList={[]}
         // utilitiesTitle=""
@@ -98,6 +98,7 @@ const AuditPage = () => {
       />
       <Managment clsPt="py-20"
         tabs={tabs}
+        
         heading="Explorez en profondeur votre trafic réseau. "
         subHeading="Portail d’Investigation"
         description="Le Portail d’Investigation offre une visibilité détaillée sur l’ensemble du trafic réseau capté par les sondes NMS ; c’est aussi l’espace où l’expert cybersécurité, l’analyste SOC ou le CISO peut détecter, interpréter et contrer les menaces."

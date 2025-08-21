@@ -22,6 +22,7 @@ import {
   LoadingMultiParagraphDetails,
   LoadingStepByStepShow,
   LoadingStepByStepBlock,
+  LoadingMainTitle,
 } from "./utils/SimpleText";
 import RouteChangeLoader from "./components/RouteChangeLoader";
 
@@ -39,6 +40,7 @@ function App() {
     LoadingMultiParagraphDetails();
     LoadingStepByStepShow();
     LoadingStepByStepBlock();
+    LoadingMainTitle();
   }, []);
   return (
     <>

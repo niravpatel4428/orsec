@@ -49,7 +49,8 @@ body {
 
 /* animations css */
 
-.animated-title span {display: inline-block;position: relative;overflow: hidden;}
+.animated-title span {display: inline-block;position: relative;overflow: hidden; }
+.loadingAnimated-title span {display: inline-block;position: relative;overflow: hidden; }
 .blur-title {position: relative;overflow: hidden;}
 
 
@@ -81,6 +82,23 @@ body {
   position: relative; /* So that the custom cursor can be properly placed */
 }
 
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-borderMove {
+  background-size: 300% 300%;
+  animation: borderMove 5s linear infinite;
+  -webkit-animation: borderMove 5s linear infinite;
+}
 
 
 

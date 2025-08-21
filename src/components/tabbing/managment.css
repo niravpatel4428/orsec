@@ -29,6 +29,7 @@
   .tab-block {
     width: 100%;
     max-width: 84%;
+    min-height: 340px;
   }
   .tab-slide {
     height: 340px;
@@ -38,6 +39,7 @@
   .tab-block {
     width: 100%;
     max-width: 580px;
+    min-height: 360px;
   }
   .tab-slide {
     height: 360px;
@@ -48,6 +50,7 @@
   .tab-block {
     width: 100%;
     max-width: 700px;
+    min-height: 480px;
   }
   .tab-slide {
     height: 480px;
@@ -57,6 +60,7 @@
   .tab-block {
     width: 100%;
     max-width: 980px;
+    min-height: 510px;
   }
   .tab-slide {
     height: 510px;
@@ -66,6 +70,7 @@
   .tab-block {
     width: 100%;
     max-width: 1240px;
+    min-height: 550px;
   }
   .tab-slide {height: 550px;}
 }

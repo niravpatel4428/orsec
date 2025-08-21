@@ -7,7 +7,7 @@ import trusted5 from "../../assets/trusted5.svg";
 import trusted6 from "../../assets/trusted6.svg";
 const Trusted = () => {
   return (
-    <section className="relative pt-16 pb-16 md:pb-20 xl:pb-28">
+    <section className="relative pt-16 pb-16 md:pb-20 xl:pb-24 xxl:pb-28">
       <div className="custom-container">
         <div className="mb-12">
           <h6 className="text-light text-32 leading-130 bottomFade">

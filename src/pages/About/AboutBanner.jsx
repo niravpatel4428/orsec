@@ -27,6 +27,8 @@ const AboutBanner = () => {
           </div>
         </div>
       </div>
+       {/* gradient */}
+      <div className="absolute bottom-0 w-full h-36 -z-1 bg-bottomGradient bg-no-repeat"></div>
     </section>
   );
 };

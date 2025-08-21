@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import CustomCursor from "../../components/CustomCursor";
+import DotGrid from "../../components/animationComp/DotGrid";
 
 const ContextObjectives = () => {
   const sectionRef = useRef(null);
@@ -31,9 +32,9 @@ const ContextObjectives = () => {
       <div className="custom-container">
         <CustomCursor targetRef={sectionRef} size={50} color="white" />
         <div className="flex flex-wrap flex-col gap-11">
-          <div className="flex flex-wrap items-center gap-6 md:gap-14 lg:gap-20">
+          <div className="flex flex-wrap items-center gap-6 md:gap-9 lg:gap-12 xl:gap-20">
             <div className="flex-initial lg:max-w-96 w-full">
-              <h2 className="text-light text-32 lg:text-40 leading-130 animated-title">
+              <h2 className="text-light text-32 lg:text-40 leading-120 animated-title">
                 <span>Contexte et objectifs</span>
               </h2>
             </div>
@@ -56,7 +57,7 @@ const ContextObjectives = () => {
             {objective_blocks.map((block, index) => (
               <div
                 key={index}
-                className="flex flex-wrap flex-col gap-5 p-4 border border-[#574D63] bg-transparent rounded hover:bg-techGradient transition-all duration-300 StepByStepBlock"
+                className="relative overflow-hidden flex flex-wrap flex-col gap-5 p-4 border border-[#574D63] bg-transparent rounded StepByStepBlock"
               >
                 <div className="flex flex-wrap flex-col gap-2">
                   <span className="text-light text-xs ">{block.id}</span>
@@ -69,6 +70,19 @@ const ContextObjectives = () => {
                     <p key={i}>{para}</p>
                   ))}
                 </div>
+
+                {/* background dot */}
+                <DotGrid
+                  dotSize={4}
+                  gap={12}
+                  baseColor="#0000"
+                  activeColor="#BF50E5"
+                  proximity={120}
+                  shockRadius={150}
+                  shockStrength={5}
+                  resistance={750}
+                  returnDuration={1.5}
+                />
               </div>
             ))}
           </div>

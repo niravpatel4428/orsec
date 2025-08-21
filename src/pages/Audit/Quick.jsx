@@ -1,8 +1,8 @@
-import React, {  useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import img1 from "../../assets/Quick-img-1.webp";
 import Btn from "../../components/btn";
-import CustomCursor from "../../components/CustomCursor";
+import SpotlightCard from "../../components/animationComp/SpotlightCard";
 
 const images = [img1, img1, img1, img1, img1, img1];
 const steps = [
@@ -46,15 +46,15 @@ const Quick = () => {
   });
 
   return (
-    <section className="relative pt-14 md:pt-16 xl:pt-28">
+    <section className="relative pt-14 md:pt-16 xl:pt-28 pb-5 md:pb-12 xxl:pb-16">
       <div className="custom-container">
         <div ref={sectionRef} className="relative md:pl-4">
-          <CustomCursor targetRef={sectionRef} size={50} color="white" />
+          {/* <CustomCursor targetRef={sectionRef} size={50} color="white" /> */}
           <div className="grid grid-cols-1 lg:grid-cols-12 max-lg:gap-16 gap-15">
             <div className="max-lg:order-2 lg:col-span-6">
               <div className="flex flex-col gap-8 lg:gap-10 justify-center xl:py-3">
-                <h4 className="text-light text-40 leading-130 animated-title">
-                  Après un incident, <br />
+                <h4 className="text-light text-40 leading-120 loadingAnimated-title">
+                  <span>Après un incident,</span> <br />
                   <span className="text-gray-light !leading-tight">
                     réagissez vite.
                   </span>
@@ -62,20 +62,19 @@ const Quick = () => {
                 <div className="relative">
                   <div className="grid grid-cols-1 lg:grid-cols-2">
                     {steps.map((step, index) => (
-                      <div
-                        key={index}
-                        className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4 lg:border border-[#574D63] StepByStepBlock"
-                      >
-                        <div className="hidden lg:block space-y-2">
-                          <span className="text-white text-xs">
-                            {step.number}
-                          </span>
-                          <h4 className="text-white text-22">{step.title}</h4>
+                      <SpotlightCard key={index} outerClass="lg:border border-[#574D63]">
+                        <div className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4 StepByStepBlock">
+                          <div className="hidden lg:block space-y-2">
+                            <span className="text-white text-xs">
+                              {step.number}
+                            </span>
+                            <h4 className="text-white text-22">{step.title}</h4>
+                          </div>
+                          <div className="flex flex-col gap-2 text-gray-light text-sm xl:text-base">
+                            <p>{step.description}</p>
+                          </div>
                         </div>
-                        <div className="flex flex-col gap-2 text-gray-light text-sm xl:text-base">
-                          <p>{step.description}</p>
-                        </div>
-                      </div>
+                      </SpotlightCard>
                     ))}
                   </div>
                 </div>

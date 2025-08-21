@@ -34,6 +34,7 @@ module.exports = {
       },
       lineHeight: {
         110: "110%",
+        120: "120%",
         130: "130%",
         150: "150%",
       },
@@ -81,12 +82,13 @@ module.exports = {
           "linear-gradient(0deg, rgba(2, 3, 12, 0.00) 67.09%, #02030C 95.12%);",
         miniGradient:
           "linear-gradient(180deg, #101012 0%, #1E1D28 100%), #080112;",
-        globeTopGradient:
-          "linear-gradient(180deg, #02030C 0%, #02030C00 100%)",
+        globeTopGradient: "linear-gradient(180deg, #02030C 0%, #02030C00 100%)",
         globeBottmGradient:
           "linear-gradient(180deg, rgba(2, 3, 12, 0.00) 33.27%, #02030C 70.75%)",
         tabbingCardGradient:
           "linear-gradient(180deg, #101012 0%, #1E1D28 100%)",
+        footerBg:
+          "radial-gradient(58.37% 58.36% at 48.03% 95.6%, rgba(40, 11, 100, 0.40) 0%, rgba(108, 75, 153, 0.30) 22.49%, rgba(161, 139, 195, 0.20) 48.64%, rgba(0, 0, 0, 0.00) 100%)",
       },
     },
   },

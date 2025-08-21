@@ -1,6 +1,7 @@
 import expertImg1 from "../../assets/expert-img1.webp";
 import expertImg2 from "../../assets/expert-img2.webp";
 import expertImg3 from "../../assets/expert-img3.webp";
+import GradientBorderCard from "../../components/animationComp/GradientBorderCard ";
 
 const ExpertTeam = () => {
   const experts = [
@@ -31,52 +32,61 @@ const ExpertTeam = () => {
     <section className="pt-14 pb-20 md:pt-16 lg:pt-20 lg:pb-24">
       <div className="custom-container">
         <div className="flex flex-wrap flex-col gap-6 md:gap-8 lg:gap-10">
-          <h2 className="text-light text-2xl md:text-32 lg:text-40  leading-130 max-w-700 w-full animated-title">
-            <span>Une équipe experte et engagée</span>{" "}
+          <h2 className="text-light text-2xl md:text-32 xl:text-4xl xxl:text-40 leading-120 max-w-700 w-full animated-title">
+            <span>Une équipe experte et engagée</span>
             <span>
-              pour votre{" "}
+              pour votre
               <p className="inline-block text-gray-light">sécurité numérique</p>
             </span>
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 gap-8 md:gap-4">
             {experts.map((expert, index) => (
-              <div key={index} className="flex flex-wrap w-full flex-col gap-6 StepByStepBlock">
-                <div className="rounded-lg h-[393px] md:h-[375px] lg:h-[400px] xl:h-[500px] border border-[#30243E]">
-                  <img
-                    src={expert.image}
-                    alt="expert-img"
-                    className="w-full max-w-full h-full object-cover rounded-[inherit]"
-                  />
-                </div>
-                <div className="flex justify-between gap-4">
-                  <div className="flex-1 flex flex-wrap flex-col gap-2">
-                    <h3 className="text-light text-xl md:text-2xl  leading-130">
-                      {expert.name}
-                    </h3>
-                    {expert.position && (
-                      <p className="text-sm text-gray-medium leading-150">
-                        {expert.position}
-                      </p>
+              <>
+                <div
+                  key={index}
+                  className="flex flex-wrap w-full flex-col gap-6 StepByStepBlock"
+                >
+                  <GradientBorderCard className="rounded-lg overflow-hidden" innerClass="rounded-lg">
+                    {/* border border-[#30243E] */}
+                    <div className="h-[393px] md:h-[375px] lg:h-[400px] xl:h-[500px] rounded-lg overflow-hidden">
+                      <img
+                        src={expert.image}
+                        alt="expert-img"
+                        className="w-full max-w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  </GradientBorderCard>
+                  <div className="flex justify-between gap-4">
+                    <div className="flex-1 flex flex-wrap flex-col gap-2">
+                      <h3 className="text-light text-xl md:text-2xl  leading-130">
+                        {expert.name}
+                      </h3>
+                      {expert.position && (
+                        <p className="text-sm text-gray-medium leading-150">
+                          {expert.position}
+                        </p>
+                      )}
+                    </div>
+
+                    {expert.socials?.linkedin && (
+                      <div className="flex-initial">
+                        <ul className="inline-flex flex-wrap items-center gap-2 text-white">
+                          <li>
+                            <a
+                              href={expert.socials.linkedin}
+                              target="_blank" rel="noreferrer"
+                              className="text-inherit hover:opacity-75"
+                            >
+                              <LinkedIn />
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     )}
                   </div>
-
-                  {expert.socials?.linkedin && (
-                    <div className="flex-initial">
-                      <ul className="inline-flex flex-wrap items-center gap-2 text-white">
-                        <li>
-                          <a
-                            href={expert.socials.linkedin}
-                            className="text-inherit hover:opacity-75"
-                          >
-                            <LinkedIn />
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
                 </div>
-              </div>
+              </>
             ))}
           </div>
         </div>

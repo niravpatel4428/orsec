@@ -3,7 +3,7 @@ import Btn from "../../components/btn";
 
 const ProtectYourself = () => {
   return (
-    <section className="relative pt-16 md:pt-20 xl:pt-28 md:-mb-40 xl:-mb-64 xxl:-mb-72 z-2">
+    <section className="relative pt-16 md:pt-20 x;:pt-24 xxl:pt-28 md:-mb-40 xl:-mb-64 xxl:-mb-72 z-2">
       <div className="custom-container">
         <div className="w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto xl:px-5">
           <div className="flex flex-col justify-center items-center gap-6 md:gap-10 xl:gap-16 text-center">
@@ -15,7 +15,7 @@ const ProtectYourself = () => {
               <Btn
                 text="Testez nos solutions"
                 href="/"
-                ctmClass="!bg-[#1C1143] hover:!bg-[#9747FF]"
+                // ctmClass="!bg-[#1C1143] hover:!bg-[#9747FF]"
               />
             </div>
           </div>

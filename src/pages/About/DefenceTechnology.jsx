@@ -4,8 +4,37 @@ import defence_img2 from "../../assets/defence-img2.webp";
 import defence_img3 from "../../assets/defence-img3.webp";
 import defence_img4 from "../../assets/defence-img4.webp";
 import defence_img5 from "../../assets/defence-img5.webp";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const DefenceTechnology = () => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".fade-bottom").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.3,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+    });
+
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
   return (
     <section className="relative pt-40 pb-32 md:pt-80 md:pb-72 lg:py-96">
       <div className="relative -z-1">
@@ -40,12 +69,12 @@ const DefenceTechnology = () => {
         <div className="custom-container">
           <div className="max-w-80 sm:max-w-1200 w-full mx-auto text-center">
             <div className="flex flex-wrap flex-col gap-7 md:gap-9 lg:gap-12">
-              <h2 className="text-light text-4xl max-[370px]:text-2xl md:text-32 xl:text-4xl xxl:text-40 leading-120 max-w-[760px] w-full mx-auto animated-title">
+              <h2 className="text-light text-4xl max-[370px]:text-2xl md:text-32 xl:text-4xl xxl:text-40 leading-120 max-w-[760px] w-full mx-auto fade-bottom">
                 <span>Une technologie de défense…</span>
                 <span>désormais à votre portée.</span>
               </h2>
 
-              <div className="flex flex-wrap flex-col gap-5 lg:text-2xl leading-150 text-white bottomFade">
+              <div className="flex flex-wrap flex-col gap-5 lg:text-2xl leading-150 text-white fade-bottom">
                 <p>
                   Notre objectif principal est de
                   <span className="text-gray-light">protéger notre pays</span>,

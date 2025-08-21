@@ -2,37 +2,83 @@ import expertImg1 from "../../assets/expert-img1.webp";
 import expertImg2 from "../../assets/expert-img2.webp";
 import expertImg3 from "../../assets/expert-img3.webp";
 import GradientBorderCard from "../../components/animationComp/GradientBorderCard ";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
+const experts = [
+  {
+    name: "David",
+    position: "Directeur Technique",
+    image: expertImg1,
+    socials: {
+      linkedin: "#",
+    },
+  },
+  {
+    name: "Malena",
+    position: "Presidente",
+    image: expertImg2,
+    socials: {
+      linkedin: "#",
+    },
+  },
+  {
+    name: "Une équipe R&D dédiée",
+    position: "",
+    image: expertImg3,
+    socials: {},
+  },
+];
 const ExpertTeam = () => {
-  const experts = [
-    {
-      name: "David",
-      position: "Directeur Technique",
-      image: expertImg1,
-      socials: {
-        linkedin: "#",
-      },
-    },
-    {
-      name: "Malena",
-      position: "Presidente",
-      image: expertImg2,
-      socials: {
-        linkedin: "#",
-      },
-    },
-    {
-      name: "Une équipe R&D dédiée",
-      position: "",
-      image: expertImg3,
-      socials: {},
-    },
-  ];
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".fade-bottom").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.3,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+      gsap.fromTo(
+        ".fade-card",
+        { filter: "blur(20px)", opacity: 0, y: 40 },
+        {
+          filter: "blur(0px)",
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: ".parent-card",
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
   return (
     <section className="pt-14 pb-20 md:pt-16 lg:pt-20 lg:pb-24">
       <div className="custom-container">
         <div className="flex flex-wrap flex-col gap-6 md:gap-8 lg:gap-10">
-          <h2 className="text-light text-2xl md:text-32 xl:text-4xl xxl:text-40 leading-120 max-w-700 w-full animated-title">
+          <h2 className="text-light text-2xl md:text-32 xl:text-4xl xxl:text-40 leading-120 max-w-700 w-full fade-bottom">
             <span>Une équipe experte et engagée</span>
             <span>
               pour votre
@@ -40,14 +86,17 @@ const ExpertTeam = () => {
             </span>
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 gap-8 md:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 gap-8 md:gap-4 parent-card">
             {experts.map((expert, index) => (
               <>
                 <div
                   key={index}
-                  className="flex flex-wrap w-full flex-col gap-6 StepByStepBlock"
+                  className="flex flex-wrap w-full flex-col gap-6 fade-card"
                 >
-                  <GradientBorderCard className="rounded-lg overflow-hidden" innerClass="rounded-lg">
+                  <GradientBorderCard
+                    className="rounded-lg overflow-hidden"
+                    innerClass="rounded-lg"
+                  >
                     {/* border border-[#30243E] */}
                     <div className="h-[393px] md:h-[375px] lg:h-[400px] xl:h-[500px] rounded-lg overflow-hidden">
                       <img
@@ -75,7 +124,8 @@ const ExpertTeam = () => {
                           <li>
                             <a
                               href={expert.socials.linkedin}
-                              target="_blank" rel="noreferrer"
+                              target="_blank"
+                              rel="noreferrer"
                               className="text-inherit hover:opacity-75"
                             >
                               <LinkedIn />

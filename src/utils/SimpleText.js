@@ -154,11 +154,10 @@ export const SimpleText = () => {
   gsap.utils.toArray(".animated-title span").forEach((el) => {
     gsap.fromTo(
       el,
-      { opacity: 0, y: "60%", skewY: 3 },
+      { opacity: 0, y: "60%" },
       {
         opacity: 1,
         y: "0%",
-        skewY: 0,
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
@@ -170,7 +169,6 @@ export const SimpleText = () => {
     );
   });
 };
-
 
 export const BlurTextReveal = () => {
   gsap.utils.toArray(".blur-title").forEach((el) => {

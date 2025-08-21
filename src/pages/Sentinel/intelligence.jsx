@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import icon1 from "../../assets/intelligence1.svg";
 import icon2 from "../../assets/intelligence2.svg";
 import icon3 from "../../assets/intelligence3.svg";
@@ -6,6 +6,9 @@ import icon4 from "../../assets/intelligence4.svg";
 import icon5 from "../../assets/intelligence5.svg";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const cards = [
   {
@@ -92,6 +95,31 @@ const Intelligence = () => {
     },
   });
 
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".slider-title-fade").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <>
       {/* slider style */}
@@ -107,7 +135,7 @@ const Intelligence = () => {
         <div className="custom-container">
           <div className="grid col-span-1 lg:grid-cols-12 xxl:pl-6 mb-16 xl:mb-20">
             <div className="lg:col-span-12">
-              <h4 className="text-light text-32 xl:text-40 !leading-130 animated-title">
+              <h4 className="text-light text-32 xl:text-40 !leading-130 slider-title-fade">
                 <span> Notre méthode s&apos;inspire du cycle</span> <br />
                 <span> traditionnel du renseignement.</span>
                 <span className="text-gray-light uppercase">&nbsp;COMINT</span>

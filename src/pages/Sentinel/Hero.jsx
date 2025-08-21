@@ -3,24 +3,61 @@ import React from "react";
 import machine from "../../assets/sentinel-machine.png";
 import Btn from "../../components/btn";
 import LightRays from "../../components/animationComp/Rays";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const Hero = () => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".sential-main-title").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { filter: "blur(10px)", y: 30 },
+          {
+            filter: "blur(0px)",
+            y: 0,
+            duration: 1.2,
+            delay: 1.6,
+            ease: "power3.out",
+            stagger: 0.1,
+          }
+        );
+      });
+      gsap.fromTo(
+        ".fade-text",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          delay: 1.9,
+          ease: "power3.out",
+          stagger: 0.2, 
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
   return (
     <section className="relative mim-h-screen pt-52 -mt-[68px] lg:-mt-20">
       {/* content */}
       <div className="custom-container">
         <div className="w-full max-w-[810px] mx-auto">
           <div className="flex flex-col justify-center items-center gap-6 xl:gap-9 text-center">
-            <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl leading-130 font-bold loadingAnimated-title">
+            <h1 className="text-light text-32 md:text-5xl lg:text-6xl xl:text-7xl leading-130 font-bold sential-main-title">
               <span>NMS Sentinel</span>
             </h1>
 
-            <div className="space-y-2 text-light text-xs md:text-xl lg:text-2xl loadingBottomFade">
+            <div className="space-y-2 text-light text-xs md:text-xl lg:text-2xl fade-text">
               <p>
                 Soyez alerté des menaces en temps réel, pour protéger vos
                 données des fuites et des suppressions.
               </p>
             </div>
-            <div className="loadingBottomFade">
+            <div className="fade-text">
               <Btn text="Testez NMS Sentinel" href="/" />
             </div>
           </div>

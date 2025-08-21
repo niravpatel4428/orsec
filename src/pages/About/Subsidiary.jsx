@@ -1,7 +1,35 @@
 import { Link } from "react-router";
 import subsidiary_img from "../../assets/subsidiary-img.jpg";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Subsidiary = () => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".fade-bottom").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.3,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
   return (
     <section className="pb-16 lg:pb-20">
       <div className="custom-container">
@@ -15,13 +43,13 @@ const Subsidiary = () => {
           </div>
           <div className="flex-1">
             <div className="flex flex-wrap flex-col gap-6">
-              <h2 className="text-light text-2xl md:text-32 lg:text-40 leading-130 animated-title">
+              <h2 className="text-light text-2xl md:text-32 lg:text-40 leading-130 fade-bottom">
                 <span>
                   Filiale du Groupe
                   <p className="inline-block text-gray-light">SYLink</p>
                 </span>
               </h2>
-              <div className="flex flex-wrap flex-col gap-4 text-base text-gray-medium leading-150 bottomFade">
+              <div className="flex flex-wrap flex-col gap-4 text-base text-gray-medium leading-150 fade-bottom">
                 <p className="leading-[inherit]">
                   L'acquisition d'ORSEC Technologies par le
                   <Link className="text-white">Groupe SYLink</Link>, annoncée le

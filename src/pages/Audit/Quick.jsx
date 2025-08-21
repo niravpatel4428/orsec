@@ -3,6 +3,10 @@ import { useKeenSlider } from "keen-slider/react";
 import img1 from "../../assets/Quick-img-1.webp";
 import Btn from "../../components/btn";
 import SpotlightCard from "../../components/animationComp/SpotlightCard";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const images = [img1, img1, img1, img1, img1, img1];
 const steps = [
@@ -45,6 +49,47 @@ const Quick = () => {
     },
   });
 
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".quick-fade").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+        gsap.fromTo(
+          ".fade-card",
+          { filter: "blur(20px)", opacity: 0, y: 40 },
+          {
+            filter: "blur(0px)",
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.3,
+            scrollTrigger: {
+              trigger: ".parent-card",
+              start: "top 75%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="relative pt-14 md:pt-16 xl:pt-28 pb-5 md:pb-12 xxl:pb-16">
       <div className="custom-container">
@@ -53,17 +98,20 @@ const Quick = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 max-lg:gap-16 gap-15">
             <div className="max-lg:order-2 lg:col-span-6">
               <div className="flex flex-col gap-8 lg:gap-10 justify-center xl:py-3">
-                <h4 className="text-light text-40 leading-120 loadingAnimated-title">
+                <h4 className="text-light text-40 leading-120 quick-fade">
                   <span>Après un incident,</span> <br />
                   <span className="text-gray-light !leading-tight">
                     réagissez vite.
                   </span>
                 </h4>
                 <div className="relative">
-                  <div className="grid grid-cols-1 lg:grid-cols-2">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 parent-card">
                     {steps.map((step, index) => (
-                      <SpotlightCard key={index} outerClass="lg:border border-[#574D63]">
-                        <div className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4 StepByStepBlock">
+                      <SpotlightCard
+                        key={index}
+                        outerClass="lg:border border-[#574D63] fade-card"
+                      >
+                        <div className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4">
                           <div className="hidden lg:block space-y-2">
                             <span className="text-white text-xs">
                               {step.number}
@@ -78,7 +126,7 @@ const Quick = () => {
                     ))}
                   </div>
                 </div>
-                <div className="bottomFade">
+                <div className="quick-fade">
                   <Btn text="Testez NMS Audit" href="/" />
                 </div>
               </div>

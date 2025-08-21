@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef } from "react";
 import "./managment.css";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+import { useLayoutEffect } from "react";
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // Tabbing Section
@@ -20,6 +22,30 @@ const Managment = ({
   const buttonsRef = useRef([]);
   const containerRef = useRef(null);
   const currentIndexRef = useRef(0);
+
+    useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".title-fade").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   // Slide-in animation (no fade — only movement + 3D)
   const animateToSlide = useCallback(
@@ -151,7 +177,7 @@ const Managment = ({
           <div className="relative grid grid-cols-1 md:grid-cols-12 gap-4 mb-2">
             <div className="md:col-span-7">
               {heading && (
-                <h4 className="text-light text-32 xl:text-4xl xxl:text-40 !leading-130 bottomFade">
+                <h4 className="text-light text-32 xl:text-4xl xxl:text-40 !leading-130 title-fade">
                   {heading}
                   {subHeading && (
                     <span className="text-gray-medium">{subHeading}</span>
@@ -162,7 +188,7 @@ const Managment = ({
 
             <div className="md:col-span-5">
               {description && (
-                <div className="h-full flex flex-col justify-end items-end gap-2 bottomFade">
+                <div className="h-full flex flex-col justify-end items-end gap-2 title-fade">
                   <p className="text-gray-medium text-base">{description}</p>
                 </div>
               )}

@@ -1,32 +1,78 @@
 import React, { useRef } from "react";
 import CustomCursor from "../../components/CustomCursor";
 import DotGrid from "../../components/animationComp/DotGrid";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
+const objective_blocks = [
+  {
+    id: "01",
+    title: "Quoi",
+    details: [
+      `Notre sonde ORSEC est une solution avancée de détection et d'analyse du trafic réseau. Elle utilise un moteur DPI sophistiqué pour classifier et décoder les protocoles et les applications à différents niveaux du réseau, offrant une visibilité approfondie de l'activité réseau.`,
+    ],
+  },
+  {
+    id: "02",
+    title: "Quand",
+    details: [
+      `La sonde ORSEC est disponible dès maintenant et peut être déployée dans les environnements réseau des clients à tout moment. Son utilisation peut commencer immédiatement pour renforcer la sécurité et la surveillance du trafic réseau.`,
+    ],
+  },
+  {
+    id: "03",
+    title: "Où",
+    details: [
+      `La sonde ORSEC peut être installée dans les infrastructures réseau des clients, qu'ils soient situés localement sur site ou dans des environnements cloud. Elle est conçue pour s'adapter à différents environnements et échelles, offrant une visibilité et une protection réseau où qu'elles soient nécessaires.`,
+    ],
+  },
+];
 const ContextObjectives = () => {
   const sectionRef = useRef(null);
-  const objective_blocks = [
-    {
-      id: "01",
-      title: "Quoi",
-      details: [
-        `Notre sonde ORSEC est une solution avancée de détection et d'analyse du trafic réseau. Elle utilise un moteur DPI sophistiqué pour classifier et décoder les protocoles et les applications à différents niveaux du réseau, offrant une visibilité approfondie de l'activité réseau.`,
-      ],
-    },
-    {
-      id: "02",
-      title: "Quand",
-      details: [
-        `La sonde ORSEC est disponible dès maintenant et peut être déployée dans les environnements réseau des clients à tout moment. Son utilisation peut commencer immédiatement pour renforcer la sécurité et la surveillance du trafic réseau.`,
-      ],
-    },
-    {
-      id: "03",
-      title: "Où",
-      details: [
-        `La sonde ORSEC peut être installée dans les infrastructures réseau des clients, qu'ils soient situés localement sur site ou dans des environnements cloud. Elle est conçue pour s'adapter à différents environnements et échelles, offrant une visibilité et une protection réseau où qu'elles soient nécessaires.`,
-      ],
-    },
-  ];
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".fade-bottom").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.3,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+      gsap.fromTo(
+        ".fade-card",
+        { filter: "blur(20px)", opacity: 0, y: 40 },
+        {
+          filter: "blur(0px)",
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: ".parent-card",
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
   return (
     <section ref={sectionRef} className="pt-16 pb-4 lg:py-24">
       <div className="custom-container">
@@ -34,12 +80,12 @@ const ContextObjectives = () => {
         <div className="flex flex-wrap flex-col gap-11">
           <div className="flex flex-wrap items-center gap-6 md:gap-9 lg:gap-12 xl:gap-20">
             <div className="flex-initial lg:max-w-96 w-full">
-              <h2 className="text-light text-32 lg:text-40 leading-120 animated-title">
+              <h2 className="text-light text-32 lg:text-40 leading-120 fade-bottom">
                 <span>Contexte et objectifs</span>
               </h2>
             </div>
             <div className="flex-1">
-              <div className="flex flex-wrap gap-5 text-base text-gray-medium leading-relaxed bottomFade">
+              <div className="flex flex-wrap gap-5 text-base text-gray-medium leading-relaxed fade-bottom">
                 <p>
                   L'objectif principal de notre sonde ORSEC est de renforcer la
                   sécurité des entreprises et des organisations en détectant les
@@ -53,11 +99,11 @@ const ContextObjectives = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 gap-4 parent-card">
             {objective_blocks.map((block, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden flex flex-wrap flex-col gap-5 p-4 border border-[#574D63] bg-transparent rounded StepByStepBlock"
+                className="relative overflow-hidden flex flex-wrap flex-col gap-5 p-4 border border-[#574D63] bg-transparent rounded fade-card"
               >
                 <div className="flex flex-wrap flex-col gap-2">
                   <span className="text-light text-xs ">{block.id}</span>

@@ -1,6 +1,36 @@
 import React from "react";
 import globe from "../../assets/globe.mp4";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const Globe = () => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+    
+      gsap.utils.toArray(".fade-bottom").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+      
+    });
+
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
   return (
     <section className="relative h-full lg:h-screen overflow-hidden">
       <video
@@ -19,7 +49,7 @@ const Globe = () => {
       <div className="w-full absolute top-2 md:top-12 left-1/2 -translate-x-1/2 z-3">
         <div className="custom-container">
           <div className="w-full sm:max-w-xl md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg mx-auto">
-            <div className="w-full flex flex-col gap-2 text-white text-xs md:text-[19px] text-center !leading-130 bottomFade">
+            <div className="w-full flex flex-col gap-2 text-white text-xs md:text-[19px] text-center !leading-130 fade-bottom">
               <p>
                 Que vous soyez un Datacenter cherchant à gérer et sécuriser des
                 volumes massifs de données tout en optimisant la performance de

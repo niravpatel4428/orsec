@@ -1,9 +1,36 @@
 import { useRef } from "react";
 import CustomCursor from "../../components/CustomCursor";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const InfoItem = ({ number, title, description, icon }) => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".InfoItem").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { filter: "blur(10px)", opacity: 0 },
+          {
+            filter: "blur(0px)",
+            opacity: 1,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
   return (
-    <div className="w-[48%] max-md:rounded md:w-full p-4 md:pt-10 md:px-5 lg:px-8 pb-6 max-md:border border-t border-[#574D63] flex max-md:flex-col justify-between StepByStepBlock">
+    <div className="w-[48%] max-md:rounded md:w-full p-4 md:pt-10 md:px-5 lg:px-8 pb-6 max-md:border border-t border-[#574D63] flex max-md:flex-col justify-between InfoItem">
       <div className="flex max-md:flex-col gap-2 md:gap-8 lg:gap-10 xl:gap-14">
         <span className="text-white text-xs md:text-sm ">{number}</span>
         <div className="w-full max-w-56 xl:max-w-80">

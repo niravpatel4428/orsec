@@ -1,10 +1,47 @@
-
 import blocks from "../../assets/blocks.webp";
 import blocksM from "../../assets/blocks-mobile.webp";
 import blocksT from "../../assets/blocks-tablet.webp";
 import blocksST from "../../assets/blocks-tablet-small.webp";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".main-title").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { filter: "blur(10px)", y: 28 },
+          {
+            filter: "blur(0px)",
+            y: 0,
+            duration: 1.2,
+            delay: 1.6,
+            ease: "power3.out",
+            stagger: 0.1,
+          }
+        );
+      });
+      gsap.utils.toArray(".blur-text").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { filter: "blur(10px)", x: -15 },
+          {
+            filter: "blur(0px)",
+            x: 0,
+            duration: 1.2,
+            delay: 1.6,
+            ease: "power3.out",
+            stagger: 0.1,
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
   return (
     <>
       <section className="relative lg:h-[900px] xl:h-[1150px] -mt-[68px] lg:-mt-20s">
@@ -12,11 +49,11 @@ const Hero = () => {
         <div className="absolute top-0 lg:relative h-full w-full max-w-screen-lg xl:max-w-screen-xl xxl:max-w-screen-xxl mx-auto">
           <div className="custom-contaier">
             <div className="relative z-5 w-full max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl xxl:max-w-6xl mx-auto text-center max-sm:px-5 pt-28 md:pt-36 xl:pt-44">
-              <h1 className="relative text-light text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl xxl:text-40 !leading-130 loadingAnimated-title">
-                <span>
-                  <p className="inline-block text-gray-light">
-                    Identifiez les intrusions
-                  </p>{" "}
+              <h1 className="relative text-light text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl xxl:text-40 !leading-130 main-title">
+                <span className="!inline-flex items-center">
+                  <span className="inline-block text-gray-light">
+                    Identifiez les intrusions&nbsp;
+                  </span>{" "}
                   sur votre réseau, grâce à des
                 </span>
                 <br />
@@ -28,7 +65,7 @@ const Hero = () => {
             <div className="absolute top-1/2 translate-y-20 xl:translate-y-28 left-10 xl:left-20 z-5">
               <div className="w-full max-w-64 xl:max-w-80 xxl:max-w-[349px]">
                 <div className="border-l border-accent-dark p-4 xl:p-6 backdrop-blur-md">
-                  <p className="text-light text-base xl:text-lg xxl:text-22 loadingBlur-title">
+                  <p className="text-light text-base xl:text-lg xxl:text-22 blur-text">
                     Surveillance en temps réel, autonome et permanente.
                   </p>
                 </div>
@@ -37,7 +74,7 @@ const Hero = () => {
             <div className="absolute top-1/2 translate-y-20 xl:translate-y-28 left-1/2 -translate-x-24 z-5">
               <div className="w-full max-w-64 xl:max-w-80 xxl:max-w-[349px]">
                 <div className="border-l border-accent-dark p-4 xl:p-6 backdrop-blur-md">
-                  <p className="text-light text-base xl:text-lg xxl:text-22 loadingBlur-title">
+                  <p className="text-light text-base xl:text-lg xxl:text-22 blur-text">
                     Analyse rapide post-incident et conformité.
                   </p>
                 </div>
@@ -46,7 +83,7 @@ const Hero = () => {
             <div className="absolute top-1/2 translate-y-24 xl:translate-y-32 right-3 xl:right-14 z-5">
               <div className="w-full max-w-64 xl:max-w-80 xxl:max-w-[366px]">
                 <div className="border-l border-accent-dark p-4 xl:p-6 backdrop-blur-md">
-                  <p className="text-light text-base xl:text-lg xxl:text-22 loadingBlur-title">
+                  <p className="text-light text-base xl:text-lg xxl:text-22 blur-text">
                     Protection sur mesure pour réseaux haute performance.
                   </p>
                 </div>

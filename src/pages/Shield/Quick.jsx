@@ -3,6 +3,10 @@ import img1 from "../../assets/shield-page-quick.webp";
 import bg from "../../assets/shield-page-quick-img-bg.webp";
 import Btn from "../../components/btn";
 import SpotlightCard from "../../components/animationComp/SpotlightCard";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -32,6 +36,46 @@ const steps = [
 const Quick = () => {
   const sectionRef = useRef(null);
 
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".quick-fade").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+      gsap.fromTo(
+        ".fade-card",
+        { filter: "blur(20px)", opacity: 0, y: 40 },
+        {
+          filter: "blur(0px)",
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: ".parent-card",
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
   return (
     <section
       ref={sectionRef}
@@ -42,12 +86,12 @@ const Quick = () => {
         <div className="h-full w-full max-w-[680px] mx-auto">
           <div className="h-full flex flex-col gap-8 lg:gap-10 justify-center xl:py-3">
             <div className="flex flex-col gap-8">
-              <h4 className="text-light text-32 xl:text-4xl xxl:text-40 leading-130 animated-title">
+              <h4 className="text-light text-32 xl:text-4xl xxl:text-40 leading-130 quick-fade">
                 <span>Une solution</span>
                 <br />
                 <span>clé en main</span>
               </h4>
-              <p className="text-gray-medium text-base bottomFade">
+              <p className="text-gray-medium text-base quick-fade">
                 Nous savons que chaque infrastructure est unique et que
                 l’adoption d’une nouvelle solution peut soulever des
                 interrogations. C’est pourquoi nos équipes vous accompagnent
@@ -55,10 +99,13 @@ const Quick = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2 parent-card">
               {steps.map((step, index) => (
-                <SpotlightCard key={index} outerClass="border border-[#574D63]">
-                  <div className="h-full py-4 px-3 lg:p-4 xxl:pr-14 flex flex-col gap-4 StepByStepBlock">
+                <SpotlightCard
+                  key={index}
+                  outerClass="border border-[#574D63] fade-card"
+                >
+                  <div className="h-full py-4 px-3 lg:p-4 xxl:pr-14 flex flex-col gap-4">
                     <div className="block space-y-2">
                       <span className="text-white text-xs">{step.number}</span>
                       <h4 className="text-white text-lg lg:text-22">
@@ -73,7 +120,7 @@ const Quick = () => {
               ))}
             </div>
 
-            <div className="hidden lg:block bottomFade">
+            <div className="hidden lg:block quick-fade">
               <Btn text="Testez NMS Shield" href="/" />
             </div>
           </div>

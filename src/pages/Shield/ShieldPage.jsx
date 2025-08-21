@@ -14,6 +14,13 @@ import image2 from "../../assets/tab-block-2.webp";
 import image3 from "../../assets/tab-block-3.webp";
 import image4 from "../../assets/tab-block-4.webp";
 import Managment from "../../components/tabbing/Managment";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+
+
 const infoItems = [
   {
     number: "01",
@@ -66,6 +73,30 @@ const tabs2 = [
   { label: "Analyse des Users Agent", image: image4 },
 ];
 const ShieldPage = () => {
+   useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".quick-fade").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <MainLayout>
       <Hero />
@@ -74,7 +105,7 @@ const ShieldPage = () => {
       <Quick />
 
       <div className="custom-container max-md:pt-10">
-        <h4 className="text-light text-32 xl:text-4xl xxl:text-40 leading-130">
+        <h4 className="text-light text-32 xl:text-4xl xxl:text-40 leading-130 quick-fade">
           <span> Pourquoi travailler avec </span>
           <br className="hidden md:block" />
           <span>

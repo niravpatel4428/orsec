@@ -5,6 +5,10 @@ import solution3 from "../../assets/solution-card-3.svg";
 import solution2 from "../../assets/solution-card-2.svg";
 import solution1 from "../../assets/solution-card-1.svg";
 import CustomCursor from "../../components/CustomCursor";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const solutions = [
   {
@@ -38,7 +42,45 @@ const solutions = [
 
 const Solutions = () => {
   const sectionRef = useRef(null);
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".solutionCard-detail *",
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: ".solutionCard-detail *",
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+      gsap.utils.toArray(".solutioFade-bottom").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
 
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
   return (
     <section
       ref={sectionRef}
@@ -48,14 +90,13 @@ const Solutions = () => {
 
       <div className="custom-container">
         <div className="mb-10">
-          <h5 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 bottomFade">
+          <h5 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 solutioFade-bottom">
             Découvrez nos solutions
           </h5>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {solutions.map((solution, index) => (
-            
             <div key={index} className="relative flex flex-col gap-6 group">
               <div className="relative p-6 border bordre-white rounded-10 transition-all duration-300">
                 <div className="absolute top-6 right-6 z-6">
@@ -81,7 +122,7 @@ const Solutions = () => {
                     {solution.tags.map((tag, tagIndex) => (
                       <button
                         key={tagIndex}
-                        className="p-2 border border-white/20 rounded-lg bg-[#1E1E1E] text-light text-10 xl:text-sm  hover:bg-primary-dark transition-all duration-300"
+                        className="p-2 border border-white/20 rounded-lg bg-[#1E1E1E] text-light text-10 xl:text-sm hover:bg-primary-dark transition-all duration-300"
                       >
                         {tag}
                       </button>
@@ -90,7 +131,7 @@ const Solutions = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4 multiParagraph">
+              <div className="flex flex-col gap-4 solutionCard-detail">
                 <p className="text-light text-[19px] !leading-tight">
                   {solution.title}
                 </p>

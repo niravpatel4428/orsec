@@ -2,6 +2,10 @@ import React from "react";
 import ids from "../../assets/ids.svg";
 import dpi from "../../assets/dpi.svg";
 import DotGrid from "../../components/animationComp/DotGrid";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const securityData = [
   {
@@ -21,27 +25,84 @@ const securityData = [
 ];
 
 const Technologies = () => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".card-detail *",
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: ".card-detail *",
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+      gsap.utils.toArray(".fade-bottom").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+      gsap.utils.toArray(".card-animate").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { filter: "blur(10px)" },
+          {
+            filter: "blur(0px)",
+            duration: 0.8,
+            ease: "power3.out",
+            stagger: 0.3,
+            markers: true,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 55%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
   return (
     <section className="pb-11 md:pb-10 pt-14 md:pt-16 xl:pt-20 xxl:pt-24">
       <div className="custom-container">
         <div className="grid grid-cols-12 max-sm:gap-6 mb-8 md:mb-12">
           <div className="col-span-12 md:col-span-6">
-            <p className="text-gray-medium text-base bottomFade">[Fonction]</p>
+            <p className="text-gray-medium text-base fade-bottom">[Fonction]</p>
           </div>
           <div className="col-span-12 md:col-span-6">
             <div className="lg:pr-10 xl:pr-24 xxl:pr-44">
-              <h3 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 bottomFade">
+              <h3 className="text-light text-2xl md:text-26 lg:text-28 xl:text-32 leading-130 fade-bottom">
                 Comment fonctionnent les DPI, à l&apos;origine des solutions
-                <span className="text-muted">ORSEC Technologies ?</span>
+                <span className="text-muted">&nbsp;ORSEC Technologies ?</span>
               </h3>
             </div>
           </div>
         </div>
         <div className="grid sm:grid-cols-12 gap-8 sm:gap-15">
           {securityData.map((item) => (
-            <div key={item.id} className="sm:col-span-6">
+            <div key={item.id} className="sm:col-span-6 card-animate">
               <div className="relative h-full flex flex-col gap-6">
-                {/* <div className="h-72 md:h-80 xl:h-[396px] border border-[#2D2C3C] bg-techGradient rounded-lg flex justify-center items-center p-14 sm:p-10 lg:p-20 xl:p-16"> */} 
+                {/* <div className="h-72 md:h-80 xl:h-[396px] border border-[#2D2C3C] bg-techGradient rounded-lg flex justify-center items-center p-14 sm:p-10 lg:p-20 xl:p-16"> */}
                 <div className="relative overflow-hidden h-72 md:h-80 xl:h-[396px] border border-[#2D2C3C] rounded-lg flex justify-center items-center p-14 sm:p-10 lg:p-20 xl:p-16">
                   <img
                     src={item.imageSrc}
@@ -60,7 +121,7 @@ const Technologies = () => {
                     returnDuration={1.5}
                   />
                 </div>
-                <div className="flex flex-col gap-2 multiParagraph">
+                <div className="flex flex-col gap-2 card-detail">
                   <h3 className="text-light text-lg md:text-xl xxl:text-23">
                     {item.title}
                   </h3>

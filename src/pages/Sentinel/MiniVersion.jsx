@@ -1,14 +1,59 @@
 import React from "react";
 import miniS from "../../assets/mini-sentinelle.png";
 import Btn from "../../components/btn";
+import { useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const MiniVersion = () => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".description li",
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: ".description",
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      gsap.utils.toArray(".fade-bottom").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
   return (
     <section className="relative z-2 mt-20 mb-48 md:mb-0 xl:-mb-20">
       <div className="custom-container">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14 lg:gap-10 xl:gap-4">
           <div className="md:col-span-5">
             <div className="h-full  w-full flex md:justify-center md:items-center">
-              <h5 className="text-light text-32 md:text-4xl xxl:text-40 !leading-tight animated-title">
+              <h5 className="text-light text-32 md:text-4xl xxl:text-40 !leading-tight fade-bottom">
                 <span>Existe en</span> <br />
                 <span>version mini</span>
               </h5>
@@ -25,7 +70,7 @@ const MiniVersion = () => {
                   />
                 </div>
 
-                <ul className="space-y-2 my-9 multiParagraph pl-7">
+                <ul className="space-y-2 my-9 multiParagraph pl-7 description">
                   <li className="text-gray-medium text-base list-disc">
                     Vision 360 sur tout votre réseau
                   </li>
@@ -42,7 +87,7 @@ const MiniVersion = () => {
                     Des millions d&apos;attaques identifiées et bloquées / mois
                   </li>
                 </ul>
-                <div className="bottomFade">
+                <div className="fade-bottom">
                   <Btn text="Testez NMS Sentinel" href="/" />
                 </div>
               </div>

@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router";
 import "./App.css";
 import HomePage from "./pages/Home/HomePage";
 import SentinelPage from "./pages/Sentinel/SentinelPage";
@@ -26,7 +31,10 @@ import {
 } from "./utils/SimpleText";
 import RouteChangeLoader from "./components/RouteChangeLoader";
 
-function App() {
+// 🔑 Component that runs animations whenever route changes
+function RouteAnimationHandler() {
+  const location = useLocation();
+
   useEffect(() => {
     BottomFade();
     SimpleText();
@@ -41,12 +49,19 @@ function App() {
     LoadingStepByStepShow();
     LoadingStepByStepBlock();
     LoadingMainTitle();
-  }, []);
+  }, [location.pathname]); 
+
+  return null;
+}
+
+function App() {
   return (
     <>
       <Router>
         <ScrollToTop />
         <RouteChangeLoader>
+          <RouteAnimationHandler />
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/sentinel" element={<SentinelPage />} />

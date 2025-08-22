@@ -3,8 +3,12 @@ import youtube from "../../assets/youtube.svg";
 import linkedin from "../../assets/linkedin.svg";
 import logo from "../../assets/navbar-logo.svg";
 import "./footer.css";
-import Iridescence from "../animationComp/Iridescence";
-
+// import Iridescence from "../animationComp/Iridescence";
+// import { useEffect, useRef } from "react";
+// import * as THREE from "three";
+// import FooterWave from "../animationComp/FooterWave";
+import ftBg from "../../assets/footer-background.webp";
+import ftBgM from "../../assets/footer-background-mobile.webp";
 const Footer = () => {
   const links = [
     { name: "À propos", href: "/about" },
@@ -12,9 +16,9 @@ const Footer = () => {
     { name: "Mentions Légales", href: "/legalnotices" },
     { name: "Statuts des services", href: "/" },
   ];
+
   return (
     <footer className="relative overflow-hidden pb-9 md:pb-12 xl:pb-16 pt-44 md:pt-72 lg:pt-80 xl:pt-[450px] xxl:pt-[570px]">
-      {/* bacground gradien TOP side */}
       <div
         className="w-full h-72 absolute top-0"
         style={{
@@ -22,7 +26,7 @@ const Footer = () => {
         }}
       ></div>
       {/*  */}
-      <Iridescence
+      {/* <Iridescence
         color={[
           [0.59, 0.28, 1.0],
           [0.23, 0.11, 0.36],
@@ -30,7 +34,7 @@ const Footer = () => {
         mouseReact={true}
         amplitude={1}
         speed={1.0}
-      />
+      /> */}
       {/* <WaveBackground /> */}
       {/* content */}
       <div className="custom-container">
@@ -90,7 +94,20 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      
+      <div className="absolute bottom-0 left-0 right-0 h-[524px] md:h-[460px] lg:h-[484px] xl:h-[630px] xxl:h-[750px] w-full -z-5">
+        <img
+          src={ftBg}
+          alt="image1"
+          className="object-cover h-full w-full hidden md:block"
+        />
+        <img
+          src={ftBgM}
+          alt="image1"
+          className="object-cover h-full w-full block md:hidden"
+        />
+      </div>
+      {/*  */}
+      {/* <FooterWave /> */}
     </footer>
   );
 };

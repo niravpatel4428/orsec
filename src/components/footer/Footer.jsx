@@ -3,12 +3,8 @@ import youtube from "../../assets/youtube.svg";
 import linkedin from "../../assets/linkedin.svg";
 import logo from "../../assets/navbar-logo.svg";
 import "./footer.css";
+import Aurora from "../animationComp/Aurora";
 // import Iridescence from "../animationComp/Iridescence";
-// import { useEffect, useRef } from "react";
-// import * as THREE from "three";
-// import FooterWave from "../animationComp/FooterWave";
-import ftBg from "../../assets/footer-background.webp";
-import ftBgM from "../../assets/footer-background-mobile.webp";
 const Footer = () => {
   const links = [
     { name: "À propos", href: "/about" },
@@ -25,7 +21,6 @@ const Footer = () => {
           background: `linear-gradient(180deg, #02030C 50%, rgba(2, 3, 12, 0.00) 100%)`,
         }}
       ></div>
-      {/*  */}
       {/* <Iridescence
         color={[
           [0.59, 0.28, 1.0],
@@ -94,20 +89,13 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-[524px] md:h-[460px] lg:h-[484px] xl:h-[630px] xxl:h-[750px] w-full -z-5">
-        <img
-          src={ftBg}
-          alt="image1"
-          className="object-cover h-full w-full hidden md:block"
-        />
-        <img
-          src={ftBgM}
-          alt="image1"
-          className="object-cover h-full w-full block md:hidden"
-        />
-      </div>
-      {/*  */}
-      {/* <FooterWave /> */}
+    
+      <Aurora
+        colorStops={["#301F50", "#45118B", "#301F50"]}
+        blend={3}
+        amplitude={2}
+        speed={0.8}
+      />
     </footer>
   );
 };

@@ -64,27 +64,29 @@ const Quick = () => {
               trigger: el,
               start: "top 70%",
               toggleActions: "play none none none",
-            },
-          }
-        );
-        gsap.fromTo(
-          ".fade-card",
-          { filter: "blur(20px)", opacity: 0, y: 40 },
-          {
-            filter: "blur(0px)",
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: "power3.out",
-            stagger: 0.3,
-            scrollTrigger: {
-              trigger: ".parent-card",
-              start: "top 75%",
-              toggleActions: "play none none none",
+              markers: false, // ✅ put markers here
             },
           }
         );
       });
+      // gsap.fromTo(
+      //   ".fade-card",
+      //   { opacity: 0, y: 40, filter: "blur(20px)" }, // hidden state
+      //   {
+      //     opacity: 1,
+      //     y: 0,
+      //     filter: "blur(0px)",
+      //     duration: 1.2,
+      //     ease: "power3.out",
+      //     stagger: 0.3,
+      //     scrollTrigger: {
+      //       trigger: ".parent-card",
+      //       start: "top 75%",
+      //       toggleActions: "play none none none", // play only once
+      //       markers: true,
+      //     },
+      //   }
+      // );
     });
 
     return () => ctx.revert();
@@ -105,24 +107,28 @@ const Quick = () => {
                   </span>
                 </h4>
                 <div className="relative">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 parent-card">
+                  <div className="grid grid-cols-1 lg:grid-cols-2">
                     {steps.map((step, index) => (
-                      <SpotlightCard
-                        key={index}
-                        outerClass="lg:border border-[#574D63] fade-card"
-                      >
-                        <div className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4">
-                          <div className="hidden lg:block space-y-2">
-                            <span className="text-white text-xs">
-                              {step.number}
-                            </span>
-                            <h4 className="text-white text-22">{step.title}</h4>
+                      <div className="quick-fade">
+                        <SpotlightCard
+                          key={index}
+                          outerClass="lg:border border-[#574D63]"
+                        >
+                          <div className="h-full py-2 lg:p-4 xxl:pr-14 flex flex-col gap-4">
+                            <div className="hidden lg:block space-y-2">
+                              <span className="text-white text-xs">
+                                {step.number}
+                              </span>
+                              <h4 className="text-white text-22">
+                                {step.title}
+                              </h4>
+                            </div>
+                            <div className="flex flex-col gap-2 text-gray-light text-sm xl:text-base">
+                              <p>{step.description}</p>
+                            </div>
                           </div>
-                          <div className="flex flex-col gap-2 text-gray-light text-sm xl:text-base">
-                            <p>{step.description}</p>
-                          </div>
-                        </div>
-                      </SpotlightCard>
+                        </SpotlightCard>
+                      </div>
                     ))}
                   </div>
                 </div>

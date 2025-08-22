@@ -55,23 +55,6 @@ const Quick = () => {
           }
         );
       });
-      gsap.fromTo(
-        ".fade-card",
-        { filter: "blur(20px)", opacity: 0, y: 40 },
-        {
-          filter: "blur(0px)",
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power3.out",
-          stagger: 0.3,
-          scrollTrigger: {
-            trigger: ".parent-card",
-            start: "top 75%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
     });
 
     return () => ctx.revert();
@@ -101,22 +84,26 @@ const Quick = () => {
 
             <div className="grid grid-cols-2 parent-card">
               {steps.map((step, index) => (
-                <SpotlightCard
-                  key={index}
-                  outerClass="border border-[#574D63] fade-card"
-                >
-                  <div className="h-full py-4 px-3 lg:p-4 xxl:pr-14 flex flex-col gap-4">
-                    <div className="block space-y-2">
-                      <span className="text-white text-xs">{step.number}</span>
-                      <h4 className="text-white text-lg lg:text-22">
-                        {step.title}
-                      </h4>
+                <div className="quick-fade">
+                  <SpotlightCard
+                    key={index}
+                    outerClass="border border-[#574D63]"
+                  >
+                    <div className="h-full py-4 px-3 lg:p-4 xxl:pr-14 flex flex-col gap-4">
+                      <div className="block space-y-2">
+                        <span className="text-white text-xs">
+                          {step.number}
+                        </span>
+                        <h4 className="text-white text-lg lg:text-22">
+                          {step.title}
+                        </h4>
+                      </div>
+                      <div className="flex flex-col gap-2 text-gray-light text-xs md:text-sm xl:text-base">
+                        <p>{step.description}</p>
+                      </div>
                     </div>
-                    <div className="flex flex-col gap-2 text-gray-light text-xs md:text-sm xl:text-base">
-                      <p>{step.description}</p>
-                    </div>
-                  </div>
-                </SpotlightCard>
+                  </SpotlightCard>
+                </div>
               ))}
             </div>
 

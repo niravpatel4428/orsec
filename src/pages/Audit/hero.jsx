@@ -94,7 +94,7 @@ const Hero = () => {
         followMouse={true}
         mouseInfluence={0.7}
         noiseAmount={0}
-        distortion={3}
+        distortion={9}
         className="custom-rays -mt-2"
       />
       <div className="absolute bottom-0 w-full h-36 -z-1 bg-bottomGradient bg-no-repeat"></div>

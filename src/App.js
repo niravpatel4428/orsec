@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation,
 } from "react-router";
 import "./App.css";
 import HomePage from "./pages/Home/HomePage";
@@ -14,45 +13,8 @@ import ShieldPage from "./pages/Shield/ShieldPage";
 import ContactPage from "./pages/Contact/ContactPage";
 import LegalNoticesPage from "./pages/LegalNotices/LegalNoticesPage";
 import ScrollToTop from "./components/ScrollToTop";
-import {
-  SimpleText,
-  BlurTextReveal,
-  BottomFade,
-  MultiParagraphDetails,
-  StepByStepShow,
-  StepByStepBlock,
-  LoadingBottomFade,
-  LoadingSimpleText,
-  LoadingBlurTextReveal,
-  LoadingMultiParagraphDetails,
-  LoadingStepByStepShow,
-  LoadingStepByStepBlock,
-  LoadingMainTitle,
-} from "./utils/SimpleText";
+
 import RouteChangeLoader from "./components/RouteChangeLoader";
-
-// 🔑 Component that runs animations whenever route changes
-function RouteAnimationHandler() {
-  const location = useLocation();
-
-  useEffect(() => {
-    BottomFade();
-    SimpleText();
-    BlurTextReveal();
-    MultiParagraphDetails();
-    StepByStepShow();
-    StepByStepBlock();
-    LoadingBottomFade();
-    LoadingSimpleText();
-    LoadingBlurTextReveal();
-    LoadingMultiParagraphDetails();
-    LoadingStepByStepShow();
-    LoadingStepByStepBlock();
-    LoadingMainTitle();
-  }, [location.pathname]); 
-
-  return null;
-}
 
 function App() {
   return (
@@ -60,17 +22,16 @@ function App() {
       <Router>
         <ScrollToTop />
         <RouteChangeLoader>
-          <RouteAnimationHandler />
 
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/sentinel" element={<SentinelPage />} />
-            <Route path="/audit" element={<AuditPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/shield" element={<ShieldPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/legalnotices" element={<LegalNoticesPage />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/sentinel" element={<SentinelPage />} />
+          <Route path="/audit" element={<AuditPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/shield" element={<ShieldPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/legalnotices" element={<LegalNoticesPage />} />
+        </Routes>
         </RouteChangeLoader>
       </Router>
     </>

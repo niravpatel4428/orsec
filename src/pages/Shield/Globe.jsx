@@ -21,7 +21,7 @@ const Globe = () => {
             scrollTrigger: {
               trigger: el,
               start: "top 70%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );

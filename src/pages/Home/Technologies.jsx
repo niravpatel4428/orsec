@@ -39,7 +39,7 @@ const Technologies = () => {
           scrollTrigger: {
             trigger: ".card-detail *",
             start: "top 75%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -55,7 +55,7 @@ const Technologies = () => {
             scrollTrigger: {
               trigger: el,
               start: "top 70%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );
@@ -73,7 +73,7 @@ const Technologies = () => {
             scrollTrigger: {
               trigger: el,
               start: "top 55%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );

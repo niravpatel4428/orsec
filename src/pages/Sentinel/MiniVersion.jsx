@@ -21,7 +21,7 @@ const MiniVersion = () => {
           scrollTrigger: {
             trigger: ".description",
             start: "top 75%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -38,7 +38,7 @@ const MiniVersion = () => {
             scrollTrigger: {
               trigger: el,
               start: "top 70%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );

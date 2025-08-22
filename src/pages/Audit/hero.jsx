@@ -13,12 +13,13 @@ const Hero = () => {
       gsap.utils.toArray(".about-main-title").forEach((el) => {
         gsap.fromTo(
           el,
-          { filter: "blur(10px)", y: 30 },
+          { filter: "blur(10px)", y: '100%', opacity: 0 },
           {
             filter: "blur(0px)",
             y: 0,
-            duration: 1.2,
-            delay: 1.6,
+            opacity: 1,
+            duration: 1,
+            delay: 2,
             ease: "power3.out",
             stagger: 0.1,
           }
@@ -26,13 +27,25 @@ const Hero = () => {
       });
       gsap.fromTo(
         ".fade-text",
-        { y: 30, opacity: 0 },
+        { y: '100%', opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.2,
-          delay: 1.9,
+          duration: 1,
+          delay: 2.1,
           ease: "power3.out",
+          stagger: 0.2,
+        }
+      );
+      gsap.fromTo(
+        ".product-image",
+        { marginTop: -80, opacity: 0,  },
+        {
+          marginTop: 0,
+          opacity: 1,
+          duration: 1,
+          delay: 1.6,
+          ease: "bounce.out",
           stagger: 0.2,
         }
       );
@@ -45,7 +58,7 @@ const Hero = () => {
       <div className="custom-container">
         <div className="w-full max-w-[1180px] mx-auto">
           <div className="flex max-md:flex-col-reverse items-center max-md:gap-6">
-            <div className="w-full max-w-96 sm:max-w-lg md:max-w-96 lg:max-w-lg xl:max-w-2xl">
+            <div className="w-full max-w-96 sm:max-w-lg md:max-w-96 lg:max-w-lg xl:max-w-2xl product-image">
               <img
                 src={machine}
                 alt="machine"

@@ -28,7 +28,7 @@ const AboutBanner = () => {
           y: 0,
           opacity: 1,
           duration: 1.2,
-          delay: 1.9,
+          delay: 1.6,
           ease: "power3.out",
           stagger: 0.2,
         }

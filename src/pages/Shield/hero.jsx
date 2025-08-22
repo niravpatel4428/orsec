@@ -14,12 +14,13 @@ const Hero = () => {
       gsap.utils.toArray(".hero-main-title").forEach((el) => {
         gsap.fromTo(
           el,
-          { filter: "blur(10px)", y: 30 },
+          { filter: "blur(10px)", y: '100%', opacity: 0 },
           {
             filter: "blur(0px)",
             y: 0,
-            duration: 1.2,
-            delay: 1.6,
+            opacity: 1,
+            duration: 1,
+            delay: 2,
             ease: "power3.out",
             stagger: 0.1,
           }
@@ -27,13 +28,25 @@ const Hero = () => {
       });
       gsap.fromTo(
         ".fade-text",
-        { y: 30, opacity: 0 },
+        { y: '100%', opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.2,
-          delay: 1.9,
+          duration: 1,
+          delay: 2.1,
           ease: "power3.out",
+          stagger: 0.2,
+        }
+      );
+      gsap.fromTo(
+        ".product-image",
+        { marginTop: -80, opacity: 0,  },
+        {
+          marginTop: 0,
+          opacity: 1,
+          duration: 1,
+          delay: 1.6,
+          ease: "bounce.out",
           stagger: 0.2,
         }
       );
@@ -51,7 +64,7 @@ const Hero = () => {
               <img
                 src={machine}
                 alt="machine"
-                className="object-cover h-full w-full"
+                className="object-cover h-full w-full product-image"
               />
             </div>
             <div className="w-full md:max-w-md xl:max-w-xl lg:px-5 text-center">

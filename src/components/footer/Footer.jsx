@@ -4,6 +4,7 @@ import linkedin from "../../assets/linkedin.svg";
 import logo from "../../assets/navbar-logo.svg";
 import "./footer.css";
 import Iridescence from "../animationComp/Iridescence";
+
 const Footer = () => {
   const links = [
     { name: "À propos", href: "/about" },
@@ -12,9 +13,7 @@ const Footer = () => {
     { name: "Statuts des services", href: "/" },
   ];
   return (
-    <footer
-      className="relative overflow-hidden pb-9 md:pb-12 xl:pb-16 pt-44 md:pt-72 lg:pt-80 xl:pt-[450px] xxl:pt-[570px]"
-    >
+    <footer className="relative overflow-hidden pb-9 md:pb-12 xl:pb-16 pt-44 md:pt-72 lg:pt-80 xl:pt-[450px] xxl:pt-[570px]">
       {/* bacground gradien TOP side */}
       <div
         className="w-full h-72 absolute top-0"
@@ -22,6 +21,7 @@ const Footer = () => {
           background: `linear-gradient(180deg, #02030C 50%, rgba(2, 3, 12, 0.00) 100%)`,
         }}
       ></div>
+      {/*  */}
       <Iridescence
         color={[
           [0.59, 0.28, 1.0],
@@ -31,7 +31,7 @@ const Footer = () => {
         amplitude={1}
         speed={1.0}
       />
-
+      {/* <WaveBackground /> */}
       {/* content */}
       <div className="custom-container">
         <div className="w-full max-w-4xl xl:max-w-6xl xxl:max-w-7xl mx-auto">
@@ -90,6 +90,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      
     </footer>
   );
 };

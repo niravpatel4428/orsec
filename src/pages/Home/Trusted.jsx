@@ -25,7 +25,7 @@ const Trusted = () => {
           scrollTrigger: {
             trigger: ".bottomFade",
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -42,7 +42,7 @@ const Trusted = () => {
           scrollTrigger: {
             trigger: ".logo-item",
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         }
       );

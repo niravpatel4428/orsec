@@ -35,7 +35,7 @@ const Visibilty = () => {
           scrollTrigger: {
             trigger: ".card-detail *",
             start: "top 75%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -51,7 +51,7 @@ const Visibilty = () => {
             scrollTrigger: {
               trigger: el,
               start: "top 70%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );

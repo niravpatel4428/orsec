@@ -93,7 +93,9 @@ export default function Iridescence({
             gl.canvas.width / gl.canvas.height
           ),
         },
-        uMouse: { value: new Float32Array([mousePos.current.x, mousePos.current.y]) },
+        uMouse: {
+          value: new Float32Array([mousePos.current.x, mousePos.current.y]),
+        },
         uAmplitude: { value: amplitude },
         uSpeed: { value: speed },
       },
@@ -131,13 +133,12 @@ export default function Iridescence({
       ctn.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [color, speed, amplitude, mouseReact]);
-
   return (
     <div
       ref={ctnDom}
-      className="iridescence-container absolute inset-0 -z-10"
+      className="iridescence-container h-2/4 w-full rounded-t-[50%] overflow-hidden absolute left-0 right-0 bottom-0 -z-10"
       {...rest}
     />
   );

@@ -50,7 +50,7 @@ const Quick = () => {
             scrollTrigger: {
               trigger: el,
               start: "top 70%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );
@@ -68,7 +68,7 @@ const Quick = () => {
           scrollTrigger: {
             trigger: ".parent-card",
             start: "top 75%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         }
       );

@@ -6,31 +6,32 @@
 @import "keen-slider/keen-slider.min.css";
 
 :root {
-  --color-primary-dark: #02030C;
-  --color-gray-dark: #2D2D31;
+  --color-primary-dark: #02030c;
+  --color-gray-dark: #2d2d31;
   --color-neutral-dark: #141415;
-  --color-light: #FEFEFE;
-  --color-gray-light: #B6B6B6;
-  --color-gray-medium: #ABACAD;
-  --color-accent-dark: #8C70B1;
-  --color-accent-light: #BB8BF1;
-  --color-muted: #B6B6B6;
+  --color-light: #fefefe;
+  --color-gray-light: #b6b6b6;
+  --color-gray-medium: #abacad;
+  --color-accent-dark: #8c70b1;
+  --color-accent-light: #bb8bf1;
+  --color-muted: #b6b6b6;
 }
-
 
 body {
   @apply font-sora font-normal bg-primary-dark;
   /* @apply font-sora font-normal bg-white; */
 }
 
+/* loader animation */
 @keyframes breathing {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 10px rgba(168,85,247,0.6));
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6));
   }
   50% {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 25px rgba(168,85,247,1));
+    filter: drop-shadow(0 0 25px rgba(168, 85, 247, 1));
   }
 }
 
@@ -38,7 +39,6 @@ body {
   animation: breathing 1s ease-in-out infinite;
   -webkit-animation: breathing 1s ease-in-out infinite;
 }
-
 
 .custom-container {
   width: 100%;
@@ -49,10 +49,20 @@ body {
 
 /* animations css */
 
-.animated-title span {display: inline-block;position: relative;overflow: hidden; }
-.loadingAnimated-title span {display: inline-block;position: relative;overflow: hidden; }
-.blur-title {position: relative;overflow: hidden;}
-
+.animated-title span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+.loadingAnimated-title span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+.blur-title {
+  position: relative;
+  overflow: hidden;
+}
 
 /* Default custom cursor style */
 .custom-cursor {
@@ -68,7 +78,6 @@ body {
   transform: translate(-50%, -50%); /* Keep the cursor centered at mouse */
   z-index: 1000;
 }
-
 
 /* Custom cursor style when hovering over links or specific elements */
 .custom-cursor--active {
@@ -102,27 +111,29 @@ body {
 
 
 
-@media (min-width: 1280px) and (max-width:1439px) { 
+@media (min-width: 1280px) and (max-width: 1439px) {
   .custom-container {
     max-width: 1280px;
   }
 }
-@media (min-width: 1024px) and (max-width:1279px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
   .custom-container {
     max-width: 1020px;
   }
 }
-@media (min-width: 768px) and (max-width:1023px) { 
+@media (min-width: 768px) and (max-width: 1023px) {
   .custom-container {
     max-width: 750px;
   }
 }
 
 @media (max-width: 767px) {
-  .custom-container {padding: 0 15px;}
+  .custom-container {
+    padding: 0 15px;
+  }
 }
 
-@media (min-width: 640px) and (max-width:767px) { 
+@media (min-width: 640px) and (max-width: 767px) {
   .custom-container {
     max-width: 600px;
   }

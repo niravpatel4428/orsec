@@ -89,7 +89,7 @@ const Notices = () => {
             scrollTrigger: {
               trigger: el,
               start: "top 70%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );
@@ -107,7 +107,7 @@ const Notices = () => {
           scrollTrigger: {
             trigger: ".description",
             start: "top 75%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         }
       );

@@ -142,7 +142,7 @@ export const BottomFade = () => {
         scrollTrigger: {
           trigger: el,
           start: "top 75%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
           markers: false,
         },
       }
@@ -163,7 +163,7 @@ export const SimpleText = () => {
         scrollTrigger: {
           trigger: el,
           start: "top 70%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -188,7 +188,7 @@ export const BlurTextReveal = () => {
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
           stagger: 0.1,
         },
       }
@@ -209,7 +209,7 @@ export const MultiParagraphDetails = () => {
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -228,7 +228,7 @@ export const StepByStepShow = () => {
         scrollTrigger: {
           trigger: el,
           start: "top 50%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -247,7 +247,7 @@ export const StepByStepBlock = () => {
         scrollTrigger: {
           trigger: el,
           start: "top 50%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       }
     );
